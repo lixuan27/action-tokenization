@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Action Tokenization (of What?) · An Interactive Empirical Handbook</title>
-<meta name="description" content="A unified light interactive handbook on cross-embodiment robot action tokenization: living architectural animations grounded in nine controlled diagnostic studies.">
-<meta name="theme-color" content="#FFFFFF">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23E8F0FE'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%231A73E8'/%3E%3C/svg%3E">
+<title>Beyond Compression: The Physics of Action Tokenization</title>
+<meta name="description" content="A visual-first 3D empirical monograph on cross-embodiment robot action tokenization: decoding geometry, task-space grounding, impedance contact force, and closed-loop adaptation.">
+<meta name="theme-color" content="#FAF9F6">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23EAF1FC'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%231D5FD6'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,398 +18,346 @@
 
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="#intro"><span class="brand-dot"></span><span>Action Tokenization (of What?)</span></a>
-    <nav class="top-links" aria-label="Quick navigation">
-      <a href="#sec-decoding">Decoding</a>
-      <a href="#sec-coverage">Coverage</a>
-      <a href="#sec-manifold">Manifold</a>
-      <a href="#sec-force">Contact Force</a>
-      <a href="#sec-closedloop">Closed-Loop</a>
+    <a class="brand" href="#prologue"><span class="brand-dot"></span><span>Beyond Compression</span></a>
+    <nav class="top-nav" aria-label="Chapters">
+      <a href="#ch-decoding">I. Decoding</a>
+      <a href="#ch-contact">II. Coverage</a>
+      <a href="#ch-manifold">III. Manifold</a>
+      <a href="#ch-force">IV. Force</a>
+      <a href="#ch-loop">V. Closed-Loop</a>
       <a href="https://github.com/lixuan27/action-tokenization" target="_blank" rel="noopener" class="gh-pill">GitHub ↗</a>
     </nav>
   </div>
 </header>
 
-<div class="ar-shell">
-  <!-- Sticky Left Contents Rail (Epoch / Handbook Style) -->
-  <aside class="ar-rail" aria-label="Contents">
-    <div class="rail-label">Contents</div>
-    <ol>
-      <li><a href="#intro" class="active">Introduction</a></li>
-      <li><a href="#sec-decoding">1. Decoding Geometry</a></li>
-      <li><a href="#sec-coverage">2. Coverage &amp; Contact</a></li>
-      <li><a href="#sec-manifold">3. Physical Manifold</a></li>
-      <li><a href="#sec-force">4. Impedance Force</a></li>
-      <li><a href="#sec-closedloop">5. Closed-Loop Law</a></li>
-      <li><a href="#sec-outlook">6. Outlook &amp; Notes</a></li>
-    </ol>
-  </aside>
+<!-- ====================================================================== -->
+<!-- MONOGRAPH COVER & PAPER-STYLE INTRODUCTION                             -->
+<!-- ====================================================================== -->
+<header class="monograph-head" id="prologue">
+  <div class="eyebrow">
+    <span>November 2026</span>
+    <span class="eyebrow-dot"></span>
+    <span>Cross-Embodiment Robotics</span>
+    <span class="eyebrow-dot"></span>
+    <span>Six Interactive 3D Studio Films</span>
+  </div>
+  <h1>Beyond Compression<em>The Physics of Action Tokenization</em></h1>
+  <p class="monograph-dek">Why reliable cross-embodiment manipulation depends on decoding geometry, canonical 3D grounding, impedance contact force, and free-space feedback.</p>
+</header>
 
-  <main class="ar-main">
-    <!-- ================================================================ -->
-    <!-- HEADER & INTRODUCTION (BROAD -> GAP -> POSITION -> APPROACH)      -->
-    <!-- ================================================================ -->
-    <header class="ar-head" id="intro">
-      <div class="ar-meta">
-        <span>Nov 26, 2026</span>
-        <span class="meta-pill">Cross-Embodiment Robotics</span>
-        <span class="meta-pill amber">9 Controlled Studies · 6 Living Blueprints</span>
+<section class="prose-band">
+  <p>Vision-Language-Action models have adopted discrete action tokens as the primary bridge connecting pretrained multimodal backbones to physical robot control.<sup class="fn">1,4,6</sup> Powered by non-neural streaming codecs such as <code>ActionCodec2</code><sup class="fn">4</sup> alongside morphology-aware encoders like <code>RoboMorpher</code><sup class="fn">12</sup> and <code>CIALLO</code>,<sup class="fn">14</sup> the field now compresses trajectories across dozens of embodiments with minimal open-loop error.</p>
+
+  <p>We observe that offline reconstruction fidelity tells only part of the story once policies enter physical closed-loop interaction. Holding a single <code>Qwen3-VL-2B</code> backbone fixed across nine controlled diagnostic studies, we think the central question has evolved toward identifying <strong>which physical signals an action stream must encode</strong>. Starting from mid-flight decoding and moving progressively through 3D task space, impedance spring force, and closed-loop residuals, the six 3D studio studies below trace one unifying physical law.</p>
+</section>
+
+<!-- FILM 00: 3D TOPOGRAPHIC GROUNDING RIDGE -->
+<div class="film-wrap">
+  <figure class="film-card" style="margin:0;">
+    <div class="film-viewport" id="vp-hero">
+      <div class="film-badge"><span class="pulse"></span><span>Prologue · <em>The Physical Grounding Surface</em></span></div>
+      <div class="film-orbit-hint">Drag to orbit in 3D</div>
+      <div class="film-subtitle" id="sub-hero">Offline reconstruction rises leftward along the flat valley, while closed-loop control climbs the orthogonal ridge of physical grounding.</div>
+    </div>
+    <div class="film-bar">
+      <div class="ctrl-row">
+        <button type="button" class="fbtn on" id="hero-play">❚❚ Pause Crane</button>
+        <button type="button" class="fbtn" id="hero-reset">Reset Camera</button>
       </div>
-      <h1>Action Tokenization <span class="accent-word">(of What?)</span></h1>
-      <p class="ar-lede">An empirical handbook on what discrete action streams need to encode so Vision-Language-Action models execute reliably across embodiments and physical contact.</p>
-    </header>
+      <span class="fslider-lbl">7 verified operating points across fixed Qwen3-VL-2B &amp; multi-arm studies</span>
+    </div>
+  </figure>
+  <p class="film-caption"><strong>Film 00 · From offline bitrate to physical grounding.</strong> Near-lossless quantization (<code>Bin256</code>, 1.2 mm error) remains on the 17.0% floor, whereas causal structure, task-space grounding, and sparse force pulses lift execution cleanly onto the 74–82% ridge.</p>
+</div>
 
-    <section class="sec first-sec">
-      <p>Vision-Language-Action models have rapidly adopted discrete action tokens as the core interface linking pretrained multimodal backbones to physical robot control.<sup class="fn">1,4,6</sup> Driven by non-neural streaming codecs such as <code>ActionCodec2</code><sup class="fn">4</sup> alongside morphology-aware encoders like <code>RoboMorpher</code><sup class="fn">12</sup> and <code>CIALLO</code>,<sup class="fn">14</sup> the community can now compress trajectories across dozens of robots with minimal reconstruction error.</p>
+<!-- ====================================================================== -->
+<!-- CHAPTER I · DECODING GEOMETRY & ANYTIME CONTROL                        -->
+<!-- ====================================================================== -->
+<section class="chapter-head" id="ch-decoding">
+  <div class="chapter-kicker">Chapter I · Decoding Geometry</div>
+  <h2>Cutting the token stream <em>mid-flight</em></h2>
+</section>
 
-      <p>Within this fast-moving landscape, we observe an important gap between offline compression metrics and real closed-loop manipulation. Evaluating tokenizers primarily by open-loop mean-squared error leaves four decisive physical factors largely hidden: mid-stream decoding structure, embodiment-invariant 3D grounding, impedance contact force, and online drift separation. Closing this gap matters deeply for generalist robotics, because scaling VLM backbones amplifies whatever physical information the action vocabulary preserves.</p>
+<section class="prose-band">
+  <p>Zero-parameter geometric and spectral codecs already outperform heavy neural autoencoders across bitrate curves.<sup class="fn">1,4,6</sup> Consequently, closed-loop responsiveness depends directly on how a vocabulary orders information across autoregressive positions.<sup class="fn">7,8,9,10</sup> Ordering tokens causally along time enables <code>Cover (EEF)</code> to stop halfway—halving tokens from <code>50.3</code> to <code>25.2</code> for a <strong>1.85× speedup</strong> (<code>143.2 → 77.2 ms</code>) while preserving <strong>76.0%</strong> LIBERO-Spatial success alongside <strong>84.0%</strong> at full length. Ordering tokens progressively enables <code>OAT (Joint)</code><sup class="fn">11</sup> to step down from <code>16</code> to <code>8</code> tokens (<code>19.0 ms</code>) while holding <strong>80.0%</strong> success.</p>
+</section>
 
-      <p>We think the central design question has shifted from compressing trajectories tighter toward deciding <strong>which physical signals an action token stream should represent</strong>. Holding a single <code>Qwen3-VL-2B</code> backbone constant across nine controlled studies, we isolate each layer in sequence—tracing how causal decoding, canonical task space, sparse Newton force pulses, and contact-gated feedback converge into one coherent physical law.</p>
-
-      <!-- PLATE 00: LIVING 3D ISOMETRIC REPRESENTATION SURFACE -->
-      <figure class="bp-plate">
-        <div class="bp-head">
-          <div class="bp-title-wrap">
-            <span class="bp-tag">Plate 00</span>
-            <span class="bp-title">The Physical Grounding Surface · Offline Fidelity vs. Closed-Loop Control</span>
-          </div>
-        </div>
-        <div class="bp-frame">
-          <div class="bp-canvas-wrap">
-            <canvas id="plate-hero" width="840" height="440"></canvas>
-            <div class="bp-tip" id="tip-hero"></div>
-          </div>
-          <div class="bp-controls">
-            <div class="bp-ctrl-group">
-              <button type="button" class="bp-btn on" id="hero-play">❚❚ Animate Surface</button>
-              <button type="button" class="bp-btn" id="hero-angle">Orbit View</button>
-            </div>
-            <span class="bp-slider-lbl">Hover any empirical pin to inspect real Qwen3-VL-2B LIBERO SR</span>
-          </div>
-        </div>
-        <figcaption class="bp-cap"><strong>Why we shift focus from bitrate to physics.</strong> Moving leftward along offline fidelity lowers open-loop error while leaving policy success nearly flat (<code>Bin256</code> reaches 17.0% at 1.2 mm error). Climbing upward along physical grounding—causal structure, task-space alignment, and sparse contact force—lifts execution directly into the high-success ridge.</figcaption>
-      </figure>
-    </section>
-
-    <!-- ================================================================ -->
-    <!-- SECTION 1 · DECODING GEOMETRY & ANYTIME CONTROL                  -->
-    <!-- ================================================================ -->
-    <section class="sec" id="sec-decoding">
-      <div class="sec-num">Section 01 · Decoding Geometry</div>
-      <h2>Causal and nested token orders enable anytime execution.</h2>
-
-      <p>Starting from the lowest layer of representation, we first examine how a token stream behaves when inference compute is cut mid-flight or when a single token shifts.<sup class="fn">7,8,9,10</sup> Lightweight spectral and geometric codecs already surpass heavy neural autoencoders across the rate–distortion curve.<sup class="fn">1,4,6</sup> Consequently, closed-loop responsiveness depends directly on how information distributes across token positions during autoregressive generation.</p>
-
-      <p>We observe two complementary structures that support graceful budget reduction while keeping policy weights frozen. Ordering tokens causally along time allows <code>Cover (EEF)</code> to stop at step 16—halving generation from <code>50.3</code> to <code>25.2</code> tokens per chunk for a <strong>1.85× speedup</strong> (<code>143.2 → 77.2 ms</code>) while retaining <strong>76.0%</strong> LIBERO-Spatial success alongside <strong>84.0%</strong> at full length. Ordering tokens progressively from coarse to fine allows <code>OAT (Joint)</code><sup class="fn">11</sup> to step down from <code>16</code> to <code>8</code> tokens (<code>19.0 ms</code>) while holding <strong>80.0%</strong> success, confirming the value of matching runtime budgets to nested codec boundaries.</p>
-
-      <!-- PLATE 01: LIVING ANYTIME STREAM & PERTURBATION BLUEPRINT -->
-      <figure class="bp-plate">
-        <div class="bp-head">
-          <div class="bp-title-wrap">
-            <span class="bp-tag">Plate 01</span>
-            <span class="bp-title">Live Anytime Token Stream &amp; Single-Token Perturbation Blueprint</span>
-          </div>
-          <div class="bp-ctrl-group" role="group" aria-label="Plate 1 mode">
-            <button type="button" class="bp-btn on" data-p1-mode="anytime">Anytime Budget Stream</button>
-            <button type="button" class="bp-btn amber" data-p1-mode="perturb">Single-Token Blast</button>
-          </div>
-        </div>
-        <div class="bp-frame">
-          <div class="bp-canvas-wrap">
-            <canvas id="plate-anytime" width="840" height="470"></canvas>
-            <div class="bp-tip" id="tip-anytime"></div>
-          </div>
-
-          <div class="bp-controls" id="p1-anytime-bar">
-            <div class="bp-slider-wrap">
-              <span class="bp-slider-lbl">Token Budget Gate</span>
-              <input type="range" id="anytime-slider" class="bp-range" min="15" max="100" value="50" aria-label="Token budget percentage">
-              <span class="bp-slider-val" id="anytime-val">50%</span>
-            </div>
-            <div class="bp-ctrl-group">
-              <button type="button" class="bp-btn on" id="anytime-sweep">❚❚ Auto-Sweep</button>
-            </div>
-          </div>
-
-          <div class="bp-controls" id="p1-perturb-bar" style="display:none;flex-direction:column;align-items:stretch;">
-            <div class="bp-ctrl-group" style="margin-bottom:4px;">
-              <button type="button" class="bp-btn on" data-pcodec="FAST">FAST (688 mm DC cliff)</button>
-              <button type="button" class="bp-btn" data-pcodec="OAT">OAT (4.3× taper)</button>
-              <button type="button" class="bp-btn" data-pcodec="QueST">QueST (flat)</button>
-              <button type="button" class="bp-btn" data-pcodec="Bin256">Bin256 (local)</button>
-              <button type="button" class="bp-btn" data-pcodec="Cover (EEF)">Cover (EEF)</button>
-            </div>
-            <div class="tok-ribbon" id="tok-ribbon"></div>
-          </div>
-        </div>
-        <figcaption class="bp-cap"><strong>Real 32-step LIBERO decoding under truncation and perturbation (Exp 1 &amp; Exp 6).</strong> Drag the budget gate or watch the live stream sweep from 15% to 100%; right-side inset tracks actual closed-loop <code>Qwen3-VL-2B</code> rollouts across 50 episodes per operating point.</figcaption>
-      </figure>
-
-      <details class="appendix">
-        <summary>Appendix Table 1 · Full Exp 1 Codec Audit (600 LIBERO Windows)</summary>
-        <div class="appendix-body">
-          <div class="tbl-wrap">
-            <table>
-              <thead>
-                <tr><th>Codec</th><th class="n">Tok/win</th><th class="n">Clean MAE</th><th class="n">1-Tok p50</th><th class="n">1-Tok p90</th><th class="n">Fallback</th><th class="n">PRC@32</th></tr>
-              </thead>
-              <tbody id="tbl-exp1-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </details>
-    </section>
-
-    <!-- ================================================================ -->
-    <!-- SECTION 2 · BEYOND VALIDATION LOSS: COVERAGE & CONTACT STALLS    -->
-    <!-- ================================================================ -->
-    <section class="sec" id="sec-coverage">
-      <div class="sec-num">Section 02 · Policy Dynamics &amp; Failure Anatomy</div>
-      <h2>EMA preserves trajectory coverage while physical contact drives failure.</h2>
-
-      <p>Following our analysis of decoding structure, we next train six distinct tokenizers under the exact same <code>Qwen3-VL-2B</code> recipe to see how offline loss translates into live LIBERO manipulation. Across four suites, <code>Cover (EEF)</code> reaches <strong>73.9%</strong> and <code>OAT (Joint)</code> reaches <strong>60.5%</strong>, whereas <code>Bin256</code> achieves only <strong>17.0%</strong> despite near-lossless <code>1.20 mm</code> reconstruction. Tracking training trajectories further echoes recent findings on post-training dynamics:<sup class="fn">2</sup> as validation cross-entropy climbs past <code>12k</code> steps, maintaining exponential moving average weights lifts stochastic <code>pass@4</code> coverage to <strong>93.3%</strong> compared with <strong>84.0%</strong> for raw weights.</p>
-
-      <p>Tracing 200 live rollouts step by step reveals why capable policies still miss episodes. In practice, <strong>72.2%</strong> of failed rollouts (<code>57 / 79</code>) concentrate inside two concrete physical regimes: <strong>contact stalls</strong> (<code>40.5%</code>), where the gripper pushes into an object while motion stays below <code>1.5 mm</code>, alongside <strong>repeated grasp slips</strong> (<code>31.6%</code>). This diagnosis leads us directly toward the two physical foundations examined next: shared spatial grounding across arms and explicit force encoding during contact.</p>
-
-      <!-- PLATE 02: LIVING COVERAGE FAN & GRIPPER CONTACT ANATOMY -->
-      <figure class="bp-plate">
-        <div class="bp-head">
-          <div class="bp-title-wrap">
-            <span class="bp-tag">Plate 02</span>
-            <span class="bp-title">Stochastic Coverage Fan (EMA pass@k) &amp; Physical Failure Mechanics</span>
-          </div>
-          <div class="bp-ctrl-group" id="p2-tabs">
-            <button type="button" class="bp-btn on" data-p2="anatomy">Coverage &amp; Contact Blueprint</button>
-            <button type="button" class="bp-btn" data-p2="leaderboard">6-Arm LIBERO Matrix</button>
-          </div>
-        </div>
-        <div class="bp-frame">
-          <div class="bp-canvas-wrap">
-            <canvas id="plate-coverage" width="840" height="410"></canvas>
-            <div class="bp-tip" id="tip-coverage"></div>
-          </div>
-        </div>
-        <figcaption class="bp-cap"><strong>What validation loss hides (Exp 2).</strong> Left: live multi-seed trajectory fan comparing <code>EMA 30k</code> (<code>93.3% pass@4</code>) with <code>Raw 30k</code> (<code>84.0%</code>). Right: animated gripper mechanics illustrating the two physical contact regimes responsible for 72.2% of LIBERO failures.</figcaption>
-      </figure>
-
-      <details class="appendix">
-        <summary>Appendix Table 2 · Same-Backbone 6-Arm LIBERO Dev-Half Results (eval_idx &lt; 25)</summary>
-        <div class="appendix-body">
-          <div class="tbl-wrap">
-            <table>
-              <thead>
-                <tr><th>Tokenizer Arm</th><th>Control Track</th><th class="n">Tok/win</th><th class="n">Spatial</th><th class="n">Object</th><th class="n">Goal</th><th class="n">LIBERO-10</th><th class="n">Mean</th></tr>
-              </thead>
-              <tbody id="tbl-libero-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </details>
-    </section>
-
-    <!-- ================================================================ -->
-    <!-- SECTION 3 · CROSS-EMBODIMENT GEOMETRY & PHYSICAL MANIFOLD        -->
-    <!-- ================================================================ -->
-    <section class="sec" id="sec-manifold">
-      <div class="sec-num">Section 03 · Cross-Embodiment Grounding</div>
-      <h2>Shared token syntax separates robots; task space unites them.</h2>
-
-      <p>Extending our inquiry from a single arm to multi-embodiment transfer, we test whether a shared joint-slot vocabulary yields shared motion semantics. Compressing held-out arms with a joint-slot cover adds only <code>+0.2%</code> to <code>+3.5%</code> bitrate overhead across thirteen arms, suggesting apparent transfer at the syntax level. Inspecting 900 paired trajectories across five arms reveals the true underlying geometry: joint-slot tokens organize motions into five robot-specific islands with <strong>66.0%</strong> 10-NN robot-ID purity, pulling zero-shot cross-arm 3D probe accuracy down to <code>R² = −1.30</code>.</p>
-
-      <p>Grounding the exact same trajectories in canonical task space (<code>C1</code>) unifies these islands immediately. Robot-ID purity relaxes to the <strong>22.4%</strong> random-mixing baseline (<code>20%</code> ideal across five arms), while cross-arm 3D motion alignment rises nearly threefold from <code>+0.243</code> to <code>+0.693</code>. We think this geometric principle explains a clear convergence across late-2026 robotics: <code>RoboMorpher</code><sup class="fn">12</sup> supervises 3D link poses directly (losing <code>17.94 pp</code> when omitted), <code>CIALLO</code><sup class="fn">14</sup> calibrates new robots in ten seconds via a 174K adapter, and embodiment-aligned systems such as <code>BiCAT</code>,<sup class="fn">13</sup> <code>AIRoA-0</code>,<sup class="fn">17</sup> and <code>UniLatent</code><sup class="fn">15</sup> anchor control in shared physical frames.<sup class="fn">16,18,19,20</sup></p>
-
-      <!-- PLATE 03: LIVING 900-TRAJECTORY MORPHING MANIFOLD BLUEPRINT -->
-      <figure class="bp-plate">
-        <div class="bp-head">
-          <div class="bp-title-wrap">
-            <span class="bp-tag">Plate 03</span>
-            <span class="bp-title">900 Paired 5-Arm Trajectories · Morphing Joint Dialects into Task Space C1</span>
-          </div>
-          <div class="bp-ctrl-group">
-            <button type="button" class="bp-btn on" id="btn-space-joint">Joint-Slot Cover</button>
-            <button type="button" class="bp-btn amber" id="btn-space-c1">Morph → Task-Space C1</button>
-            <button type="button" class="bp-btn" id="btn-color-toggle">Color: Robot Arm</button>
-          </div>
-        </div>
-        <div class="bp-frame">
-          <div class="bp-canvas-wrap">
-            <canvas id="plate-manifold" width="840" height="460" style="cursor:crosshair;"></canvas>
-            <div class="bp-tip" id="tip-manifold"></div>
-          </div>
-          <div class="bp-controls">
-            <div class="bp-slider-wrap">
-              <span class="bp-slider-lbl">Manifold Morph</span>
-              <input type="range" id="manifold-slider" class="bp-range amber" min="0" max="100" value="0" aria-label="Morph between Joint-Slot and Task-Space C1">
-              <span class="bp-slider-val amber" id="manifold-pct">Joint 100%</span>
-            </div>
-            <div class="bp-ctrl-group">
-              <button type="button" class="bp-btn" id="manifold-auto">▶ Auto-Morph</button>
-            </div>
-          </div>
-        </div>
-        <figcaption class="bp-cap"><strong>Real 18-NN cosine spectral embedding of 900 paired windows (Exp 3 &amp; Exp 9A).</strong> Click <em>Morph → Task-Space C1</em> or drag the slider to watch five disjoint robot dialects coalesce into one 3D motion space; hover any point to inspect its true millimeter displacement vector.</figcaption>
-      </figure>
-    </section>
-
-    <!-- ================================================================ -->
-    <!-- SECTION 4 · IMPEDANCE CONTACT FORCE & SPARSE FORCE INTENT        -->
-    <!-- ================================================================ -->
-    <section class="sec" id="sec-force">
-      <div class="sec-num">Section 04 · Contact Physics</div>
-      <h2>Impedance force lives in command–state deflection, solved by sparse pulses.</h2>
-
-      <p>Returning to the physical contact stalls uncovered in Section 2 leads directly to a subtle property of compliant impedance control.<sup class="fn">21,22</sup> Under spring–damper tracking, contact force arises from the virtual displacement <code>p_cmd − p_meas</code> between the commanded setpoint and the measured gripper pose. Replaying achieved kinematic poses tracks the drawer trajectory within a remarkable <strong>0.29 mm</strong> median error while reducing spring deflection to zero—causing Franka drawer success to drop from <strong>83%</strong> to <strong>14%</strong> and stalling unseen UR5e, IIWA, and Kinova Gen3 arms completely.</p>
-
-      <p>We solve this cross-embodiment contact paradox by separating kinematic motion from a sparse, deadband-gated Newton force channel (<code>C1F+D3F</code>). Because target force normalizes automatically by each robot's controller stiffness <code>K_p</code>, a <code>5 mm</code> quantized pulse gated by a <code>12 mm</code> deadband activates on only <strong>30.8%</strong> of frames yet lifts three-arm drawer rescue to <strong>81.7%</strong>—surpassing a <code>100%</code> continuous dense force stream (<strong>80.0%</strong>) and raw OSC replay across stiffness shifts while leaving free-space precision completely untouched.</p>
-
-      <!-- PLATE 04: LIVING 4-ARM IMPEDANCE SPRING & DRAWER MECHANICS BLUEPRINT -->
-      <figure class="bp-plate">
-        <div class="bp-head">
-          <div class="bp-title-wrap">
-            <span class="bp-tag amber">Plate 04</span>
-            <span class="bp-title">Four-Arm Impedance Spring Mechanics &amp; Force-Sparsity Pareto Frontier</span>
-          </div>
-          <div class="bp-ctrl-group" id="p4-mode-btns">
-            <button type="button" class="bp-btn" data-sim="ach">ach_d3 (Pose Only)</button>
-            <button type="button" class="bp-btn" data-sim="raw">Raw OSC Command</button>
-            <button type="button" class="bp-btn amber on" data-sim="c1f">C1F+D3F (Sparse Force)</button>
-          </div>
-        </div>
-        <div class="bp-frame">
-          <div class="bp-canvas-wrap">
-            <canvas id="plate-force" width="840" height="460"></canvas>
-            <div class="bp-tip" id="tip-force"></div>
-          </div>
-          <div class="bp-controls">
-            <div class="bp-slider-wrap">
-              <span class="bp-slider-lbl">Target Stiffness K_p</span>
-              <input type="range" id="sim-kp-slider" class="bp-range amber" min="50" max="200" step="10" value="100" aria-label="Target controller stiffness multiplier">
-              <span class="bp-slider-val amber" id="sim-kp-val">1.0× (150)</span>
-            </div>
-            <div class="bp-ctrl-group" id="p4-right-tabs">
-              <button type="button" class="bp-btn amber on" data-p4r="frontier">Sparsity Pareto (Exp 7B)</button>
-              <button type="button" class="bp-btn" data-p4r="heatmap">Kp × δ Matrix (Exp 4A)</button>
-            </div>
-          </div>
-        </div>
-        <figcaption class="bp-cap"><strong>Calibrated directly to our 1,680-episode multi-arm sweep and 24-cell spring law (Exp 4 &amp; Exp 7).</strong> Vary target stiffness <code>K_p</code> across the three control modes: <code>ach_d3</code> keeps springs flat (<code>1.2 N</code>), <code>Raw OSC</code> stalls at low stiffness and slams at <code>1.5×</code>, and <code>C1F+D3F</code> scales spring deflection inversely with <code>K_p</code> to open all four drawers smoothly.</figcaption>
-      </figure>
-
-      <details class="appendix">
-        <summary>Appendix Table 3 · Full 1,680-Episode Exp 4B Multi-Arm Matrix</summary>
-        <div class="appendix-body">
-          <div class="tbl-wrap">
-            <table>
-              <thead>
-                <tr><th>Task</th><th>Arm</th><th class="n">Raw</th><th class="n">Kp×1.5</th><th class="n">Kp×0.5</th><th class="n">ach_d3</th><th class="n">Grip-C1F</th><th class="n">Deadband C1F</th><th class="n">achF</th></tr>
-              </thead>
-              <tbody id="tbl-exp4-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </details>
-    </section>
-
-    <!-- ================================================================ -->
-    <!-- SECTION 5 · CLOSED-LOOP LAW & 2027 HIERARCHICAL STACK            -->
-    <!-- ================================================================ -->
-    <section class="sec" id="sec-closedloop">
-      <div class="sec-num">Section 05 · Closed-Loop Adaptation</div>
-      <h2>One physical law closes the loop: free space reveals drift; contact reveals force.</h2>
-
-      <p>The exact same command–state relationship that governs cross-arm contact also resolves online closed-loop adaptation under unknown execution drift. Measuring tracking residuals indiscriminately mixes kinematic bias with intentional grasp force, allowing blind proprioceptive feedback to rescue long <code>k=32</code> chunks (<code>32% → 52%</code>) while introducing drag during contact. Gating residual updates strictly to free space freezes <strong>74.7%</strong> of contact chunks, lifting a frozen <code>Qwen3-VL-2B</code> policy to <strong>56.7%</strong> under <code>+0.07</code> drift and <strong>50.0%</strong> under severe <code>+0.10</code> drift at <strong>zero extra VLM tokens</strong>.</p>
-
-      <p>Zooming back out to the full system level, we think this physical separation explains why modern robotic stacks naturally stratify into four complementary timescales. Sparse episodic agents such as <code>RoboThink</code><sup class="fn">5</sup> and <code>AMP1</code><sup class="fn">24</sup> adapt across attempts with minimal token overhead; causal or nested discrete codecs<sup class="fn">4,11</sup> anchor semantic pretraining; continuous motion experts like <code>MR0</code><sup class="fn">3</sup> and <code>SANA-Robot</code><sup class="fn">23</sup> execute smooth 30 Hz trajectories; and high-frequency force executors translate sparse Newton intent and free-space feedback into compliant physical interaction.</p>
-
-      <!-- PLATE 05: LIVING CLOSED-LOOP DRIFT VS CONTACT-GATED [FB] BLUEPRINT -->
-      <figure class="bp-plate">
-        <div class="bp-head">
-          <div class="bp-title-wrap">
-            <span class="bp-tag">Plate 05</span>
-            <span class="bp-title">Free-Space Drift Identification vs. Contact-Frozen Shield (Exp 5 &amp; Exp 8)</span>
-          </div>
-          <div class="bp-ctrl-group" id="p5-tabs">
-            <button type="button" class="bp-btn on" data-p5="k32">Drift Phase (k=32)</button>
-            <button type="button" class="bp-btn" data-p5="pareto">Compute Pareto (Exp 5)</button>
-            <button type="button" class="bp-btn amber" data-p5="stack">4-Tier 2027 Stack</button>
-          </div>
-        </div>
-        <div class="bp-frame">
-          <div class="bp-canvas-wrap">
-            <canvas id="plate-closedloop" width="840" height="430"></canvas>
-            <div class="bp-tip" id="tip-closedloop"></div>
-          </div>
-        </div>
-        <figcaption class="bp-cap"><strong>Unifying Section 4 and Section 5 in closed loop.</strong> Left: animated tabletop execution under unknown <code>+0.07</code> lateral drift—open-loop chunks veer off plate, while contact-gated <code>[FB]</code> identifies bias in free space and locks updates upon contact. Right: empirical drift curve, compute Pareto frontier, and emerging 4-tier architecture.</figcaption>
-      </figure>
-    </section>
-
-    <!-- ================================================================ -->
-    <!-- SECTION 6 · OUTLOOK, LANDSCAPE APPENDIX & REFERENCES             -->
-    <!-- ================================================================ -->
-    <section class="sec" id="sec-outlook">
-      <div class="sec-num">Section 06 · Outlook &amp; References</div>
-      <h2>Three open frontiers for cross-embodiment tokenization.</h2>
-
-      <p>Looking ahead, we think three concrete challenges define the next wave of physical action representations. Extending task-space and force-intent tokenization to 20–24 DoF dexterous hands requires factoring finger synergies to avoid the <code>+48%</code> to <code>+154%</code> token blowup seen in naive joint covers; incorporating morphology-aware kinematic reach critics can prevent infeasible plans such as Kinova3's <code>130/151</code> IK wall; and coupling episodic agentic memory<sup class="fn">5,24</sup> with continual low-level policy consolidation offers a path toward robots that improve permanently through real-world interaction.</p>
-
-      <details class="appendix">
-        <summary>Appendix Table 4 · Late-2026 Action Representation Landscape (15 Systems)</summary>
-        <div class="appendix-body">
-          <div class="tbl-wrap">
-            <table>
-              <thead><tr><th>System</th><th>Tier</th><th>Core Mechanism</th><th>Headline Signal</th></tr></thead>
-              <tbody>
-                <tr><td><strong>ActionCodec2</strong><sup class="fn">4</sup></td><td>Tokenizer + Loop</td><td>Non-neural cover + Set-BPE + residual correction + VLM macros</td><td>8.8 tok/s across 24 robots; zero codec training</td></tr>
-                <tr><td><strong>RoboMorpher</strong><sup class="fn">12</sup></td><td>Cross-Emb. Codec</td><td>Morphology-conditioned on 40M states w/ joint + 3D link-pose loss</td><td>−17.94 pp EmbodiBench without 3D link-pose loss</td></tr>
-                <tr><td><strong>BiCAT</strong><sup class="fn">13</sup></td><td>Bimanual Codec</td><td>Cross-arm factorized parallel dual-block autoregression</td><td>+17.6 pp RoboTwin 2.0; 40.5 ms/chunk</td></tr>
-                <tr><td><strong>CIALLO</strong><sup class="fn">14</sup></td><td>Shared Intent</td><td>8-robot intent codec + 174K-param calibrator</td><td>≤10 s new-robot calibration; 76.7% vs 70.0% π<sub>0</sub></td></tr>
-                <tr><td><strong>UniLatent</strong><sup class="fn">15</sup> / <strong>BATCH</strong><sup class="fn">16</sup></td><td>Space Alignment</td><td>Latent obs alignment / human–robot cycle consistency</td><td>Up to 93% zero-shot; 27/30 real xArm → Franka</td></tr>
-                <tr><td><strong>AIRoA-0</strong><sup class="fn">17</sup> / <strong>Pixel</strong><sup class="fn">18</sup></td><td>Data &amp; Hardware</td><td>16,151 h handheld video (0 robot data) / wheeled humanoid</td><td>78% vs 27% VLAs without robot pretraining</td></tr>
-                <tr><td><strong>Social Humanoid</strong><sup class="fn">19</sup> / <strong>UIE</strong><sup class="fn">20</sup></td><td>Humanoid Body</td><td>260 h HHI VQ space (G1) / 55.6M inertial velocity encoder</td><td>0.099 m/s zero-shot velocity on real G1</td></tr>
-                <tr class="hl-amber"><td><strong>C1F+D3F &amp; CSDW</strong><sup class="fn">21</sup></td><td>Contact Physics</td><td>Task-space pose + sparse deadband Newton force channel</td><td>30.8% active → 81.7% 3-arm rescue (beats 100% dense)</td></tr>
-                <tr><td><strong>Beyond Val Loss</strong><sup class="fn">2</sup></td><td>Post-Training</td><td><code>pass@k</code> coverage vs. reliability diagnostics</td><td>EMA 30k 93.3% pass@4 vs Raw 84.0% despite rising CE</td></tr>
-                <tr class="hl"><td><strong>MR0</strong><sup class="fn">3</sup> / <strong>SANA-Robot</strong><sup class="fn">23</sup></td><td>Hierarchical VLA</td><td>Discrete pretrain → flow-matching + CFG-DAgger / 30 Hz WAM</td><td>MR0 93.6% RoboTwin 2.0; SANA 115 ms on RTX 5090</td></tr>
-                <tr class="hl"><td><strong>RoboThink</strong><sup class="fn">5</sup> / <strong>AMP1</strong><sup class="fn">24</sup></td><td>Agentic Loop</td><td>Sparse <code>[INST]</code>/<code>[FB]</code> DAgger / zero-training episodic memory</td><td>Drift 0.09→0.87 (8k tok); AMP1 85.6% &amp; 4.6× fewer fails</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </details>
-
-      <details class="appendix">
-        <summary>Experimental Protocol &amp; Verification Provenance</summary>
-        <div class="appendix-body">
-          <p style="margin-top:12px;font-size:14px;color:var(--ink-3);">All LIBERO evaluations strictly use the development split (<code>eval_idx &lt; 25</code>; sealed test half <code>25–49</code> remains untouched). Covering vocabularies are fitted from scratch on public RoboCOIN and LIBERO training trajectories without external pretrained codec weights. Cross-arm impedance sweeps run registered robosuite 1.5.2 XMLs on unseen LIBERO demonstrations, and every animated blueprint plate draws live from verified experimental JSONs.</p>
-        </div>
-      </details>
-
-      <div style="margin-top:44px;" id="notes">
-        <h3 style="font-size:18px;font-weight:600;margin:0 0 8px;">References</h3>
-        <ol class="ref-list" id="notes-list"></ol>
+<!-- FILM 01: 3D VOLUMETRIC TOKEN RIBBON & MULTI-CODEC TRAJECTORIES -->
+<div class="film-wrap">
+  <figure class="film-card" style="margin:0;">
+    <div class="film-viewport" id="vp-anytime">
+      <div class="film-badge"><span class="pulse"></span><span>Film I · <em>Volumetric Token Stream &amp; Mid-Flight Truncation</em></span></div>
+      <div class="film-orbit-hint">Drag to orbit · Scroll or scrub gate</div>
+      <div class="film-subtitle" id="sub-anytime">A translucent cobalt laser gate slices the token stream mid-flight—watch how five real 32-step LIBERO trajectories morph in 3D space.</div>
+    </div>
+    <div class="film-bar">
+      <div class="ctrl-row">
+        <button type="button" class="fbtn on" data-f1-mode="anytime">Anytime Stream</button>
+        <button type="button" class="fbtn amber" data-f1-mode="blast">Single-Token Blast</button>
+        <button type="button" class="fbtn on" id="f1-sweep">❚❚ Auto-Sweep</button>
       </div>
+      <div class="fslider-wrap" id="f1-budget-wrap">
+        <span class="fslider-lbl">Token Budget Gate</span>
+        <input type="range" id="f1-slider" class="frange" min="15" max="100" value="55" aria-label="Autoregressive token budget">
+        <span class="fslider-val" id="f1-val">55%</span>
+      </div>
+      <div class="ctrl-row" id="f1-blast-wrap" style="display:none;">
+        <button type="button" class="fbtn amber on" data-bcodec="FAST">FAST (688 mm)</button>
+        <button type="button" class="fbtn" data-bcodec="OAT">OAT (4.3× taper)</button>
+        <button type="button" class="fbtn" data-bcodec="Bin256">Bin256 (local)</button>
+      </div>
+    </div>
+  </figure>
+  <p class="film-caption"><strong>Film I · Anytime decoding &amp; perturbation geometry (Exp 1 &amp; Exp 6).</strong> Real 3D end-effector paths reconstructed from LIBERO trajectories, paired in the upper right with live 50-episode <code>Qwen3-VL-2B</code> closed-loop truncation curves.</p>
+</div>
 
-      <div class="cite-box">
-        <button type="button" class="copy-btn" id="copy-bib">Copy BibTeX</button>
-        <pre id="bib-text" style="margin:0;">@misc{action_tokenization_of_what_2026,
-  title  = {Action Tokenization (of What?): An Empirical Handbook on Cross-Embodiment Robotics},
+<div class="drawer-wrap">
+  <details class="appendix">
+    <summary>Appendix Table I · Complete 600-Window Perturbation &amp; Bitrate Audit</summary>
+    <div class="appendix-body">
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>Codec</th><th class="n">Tok/win</th><th class="n">Clean MAE</th><th class="n">1-Tok p50</th><th class="n">1-Tok p90</th><th class="n">Fallback</th><th class="n">PRC@32</th></tr>
+          </thead>
+          <tbody id="tbl-exp1-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ====================================================================== -->
+<!-- CHAPTER II · COVERAGE FAN & PHYSICAL FAILURE ANATOMY                   -->
+<!-- ====================================================================== -->
+<section class="chapter-head" id="ch-contact">
+  <div class="chapter-kicker">Chapter II · Coverage &amp; Contact</div>
+  <h2>What validation loss hides <em>on the tabletop</em></h2>
+</section>
+
+<section class="prose-band">
+  <p>Training six tokenizers under one identical <code>Qwen3-VL-2B</code> recipe reveals that validation cross-entropy rises past <code>12k</code> steps while exponential moving average weights expand stochastic trajectory coverage to <strong>93.3%</strong> <code>pass@4</code> compared with <strong>84.0%</strong> for raw weights.<sup class="fn">2</sup> Tracing 200 live rollouts further shows that <strong>72.2%</strong> of missed episodes arise directly inside two physical contact regimes—<strong>contact stalls</strong> (<code>40.5%</code>) and <strong>grasp slips</strong> (<code>31.6%</code>)—directing our inquiry straight toward spatial alignment and contact force.</p>
+</section>
+
+<!-- FILM 02: 3D ARTICULATED GRIPPER & COVERAGE FAN -->
+<div class="film-wrap">
+  <figure class="film-card" style="margin:0;">
+    <div class="film-viewport" id="vp-coverage">
+      <div class="film-badge"><span class="pulse"></span><span>Film II · <em>Coverage Fan &amp; Physical Contact Anatomy</em></span></div>
+      <div class="film-orbit-hint">3-beat director camera · Drag to orbit</div>
+      <div class="film-subtitle" id="sub-coverage">Beat 1 — EMA 30k fans out across diverse approach arcs (93.3% pass@4), whereas Raw 30k narrows into a single brittle corridor.</div>
+    </div>
+    <div class="film-bar">
+      <div class="ctrl-row" id="f2-beats">
+        <button type="button" class="fbtn on" data-f2="auto">▶ 3-Beat Director Cut</button>
+        <button type="button" class="fbtn" data-f2="fan">EMA Coverage Fan</button>
+        <button type="button" class="fbtn amber" data-f2="stall">Contact Stall (40.5%)</button>
+        <button type="button" class="fbtn amber" data-f2="slip">Grasp Slip (31.6%)</button>
+      </div>
+      <span class="fslider-lbl">Cover EEF 73.9% · FAST 70.0% · OAT 60.5% · Bin256 17.0%</span>
+    </div>
+  </figure>
+  <p class="film-caption"><strong>Film II · Inside 200 traced LIBERO rollouts (Exp 2).</strong> A 3D parallel-jaw wrist dramatizes the exact kinematic signatures measured across our failure audit alongside the 6-arm <code>Qwen3-VL-2B</code> leaderboard inset.</p>
+</div>
+
+<div class="drawer-wrap">
+  <details class="appendix">
+    <summary>Appendix Table II · Same-Backbone 6-Arm LIBERO Dev-Half Leaderboard (eval_idx &lt; 25)</summary>
+    <div class="appendix-body">
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>Tokenizer Arm</th><th>Control Track</th><th class="n">Tok/win</th><th class="n">Spatial</th><th class="n">Object</th><th class="n">Goal</th><th class="n">LIBERO-10</th><th class="n">Mean</th></tr>
+          </thead>
+          <tbody id="tbl-libero-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ====================================================================== -->
+<!-- CHAPTER III · 3D CROSS-EMBODIMENT MANIFOLD MORPH                       -->
+<!-- ====================================================================== -->
+<section class="chapter-head" id="ch-manifold">
+  <div class="chapter-kicker">Chapter III · Cross-Embodiment Grounding</div>
+  <h2>Five robot dialects collapsing into <em>one 3D world</em></h2>
+</section>
+
+<section class="prose-band">
+  <p>Joint-slot vocabularies compress unseen arms with only <code>+0.2%</code> to <code>+3.5%</code> bitrate overhead, yet organize 900 paired trajectories into five segregated robot constellations with <strong>66.0%</strong> 10-NN robot-ID purity and <code>R² = −1.30</code> zero-shot transfer. Grounding those exact motions in canonical task space (<code>C1</code>) dissolves the five islands to the <strong>22.4%</strong> random-mixing baseline while lifting cross-arm 3D motion alignment nearly threefold from <code>+0.243</code> to <code>+0.693</code>—explaining why <code>RoboMorpher</code>,<sup class="fn">12</sup> <code>BiCAT</code>,<sup class="fn">13</sup> <code>CIALLO</code>,<sup class="fn">14</sup> <code>AIRoA-0</code>,<sup class="fn">17</sup> and <code>UniLatent</code><sup class="fn">15</sup> anchor control in shared physical frames.<sup class="fn">16,18,19,20</sup></p>
+</section>
+
+<!-- FILM 03: 900-SPHERE 3D MANIFOLD FLY-THROUGH & SPRING MORPH -->
+<div class="film-wrap">
+  <figure class="film-card" style="margin:0;">
+    <div class="film-viewport" id="vp-manifold">
+      <div class="film-badge"><span class="pulse"></span><span>Film III · <em>900 Paired 5-Arm Trajectories in 3D Space</em></span></div>
+      <div class="film-orbit-hint">Drag to fly through 3D manifold</div>
+      <div class="film-subtitle" id="sub-manifold">In Joint-Slot Cover space, five robot embodiments float in disjoint constellations (66.0% purity); click Morph to unite them in Task-Space C1.</div>
+    </div>
+    <div class="film-bar">
+      <div class="ctrl-row">
+        <button type="button" class="fbtn on" id="m-joint">Joint-Slot Islands</button>
+        <button type="button" class="fbtn amber" id="m-c1">Morph → Task-Space C1</button>
+        <button type="button" class="fbtn" id="m-color">Color: Robot Arm</button>
+        <button type="button" class="fbtn on" id="m-auto">❚❚ Auto-Morph</button>
+      </div>
+      <div class="fslider-wrap">
+        <span class="fslider-lbl">Space Morph</span>
+        <input type="range" id="m-slider" class="frange amber" min="0" max="100" value="0" aria-label="Morph 3D manifold">
+        <span class="fslider-val amber" id="m-val">Joint 100%</span>
+      </div>
+    </div>
+  </figure>
+  <p class="film-caption"><strong>Film III · 3D spectral embedding of 900 paired windows (Exp 3 &amp; Exp 9A).</strong> Five sculpted robot plinths ring the gallery floor while real 3D displacement clouds glide smoothly between joint syntax and canonical task space.</p>
+</div>
+
+<!-- ====================================================================== -->
+<!-- CHAPTER IV · THE 0.29 MM CONTACT-FORCE PARADOX (3D STUDIO CROWN JEWEL) -->
+<!-- ====================================================================== -->
+<section class="chapter-head" id="ch-force">
+  <div class="chapter-kicker">Chapter IV · Impedance Contact Physics</div>
+  <h2>Four robots, one sticky drawer, and <em>sparse Newton pulses</em></h2>
+</section>
+
+<section class="prose-band">
+  <p>Under compliant impedance control, contact force emerges strictly from the virtual spring deflection <code>p_cmd − p_meas</code>.<sup class="fn">21,22</sup> Replaying achieved poses tracks within <strong>0.29 mm</strong> median error while collapsing that spring flat—pulling Franka drawer success from <strong>83%</strong> to <strong>14%</strong> and stalling unseen UR5e, IIWA, and Kinova Gen3 arms completely. Adding a sparse, deadband-gated Newton force channel (<code>C1F+D3F</code>) fires on just <strong>30.8%</strong> of frames yet achieves <strong>81.7%</strong> three-arm rescue, outperforming a <code>100%</code> continuous dense force stream (<strong>80.0%</strong>) while staying invariant across controller stiffnesses.</p>
+</section>
+
+<!-- FILM 04: 3D FOUR-ARM STUDIO CABINET & HELICAL IMPEDANCE SPRINGS -->
+<div class="film-wrap">
+  <figure class="film-card" style="margin:0;">
+    <div class="film-viewport" id="vp-force">
+      <div class="film-badge"><span class="pulse amber"></span><span>Film IV · <em>Four-Arm 3D Impedance Springs &amp; Sticky Drawers</em></span></div>
+      <div class="film-orbit-hint">Drag to inspect 3D springs · Vary K_p</div>
+      <div class="film-subtitle" id="sub-force">C1F+D3F fires amber 5 mm Newton pulses on just 30.8% of frames—scaling spring stretch inversely with stiffness K_p so all four drawers open smoothly.</div>
+    </div>
+    <div class="film-bar">
+      <div class="ctrl-row" id="f4-modes">
+        <button type="button" class="fbtn" data-f4m="director">▶ 3-Act Film</button>
+        <button type="button" class="fbtn" data-f4m="ach">ach_d3 (Pose Only)</button>
+        <button type="button" class="fbtn" data-f4m="raw">Raw OSC</button>
+        <button type="button" class="fbtn amber on" data-f4m="c1f">C1F+D3F (Sparse Force)</button>
+      </div>
+      <div class="fslider-wrap">
+        <span class="fslider-lbl">Target Stiffness K_p</span>
+        <input type="range" id="f4-kp" class="frange amber" min="50" max="200" step="10" value="100" aria-label="Target controller stiffness">
+        <span class="fslider-val amber" id="f4-kp-val">1.0× (150)</span>
+      </div>
+    </div>
+  </figure>
+  <p class="film-caption"><strong>Film IV · 3D multi-arm impedance mechanics &amp; Force-Sparsity Pareto (Exp 4 &amp; Exp 7).</strong> Watch the physical 3D helical springs connecting each gripper (<code>p_meas</code>) to its translucent ghost target (<code>p_cmd</code>), calibrated directly to our 1,680-episode sweep and 24-cell spring law.</p>
+</div>
+
+<div class="drawer-wrap">
+  <details class="appendix">
+    <summary>Appendix Table III · Full 1,680-Episode Exp 4B Multi-Arm Matrix</summary>
+    <div class="appendix-body">
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>Task</th><th>Arm</th><th class="n">Raw</th><th class="n">Kp×1.5</th><th class="n">Kp×0.5</th><th class="n">ach_d3</th><th class="n">Grip-C1F</th><th class="n">Deadband C1F</th><th class="n">achF</th></tr>
+          </thead>
+          <tbody id="tbl-exp4-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ====================================================================== -->
+<!-- CHAPTER V · CLOSED-LOOP LAW & 4-TIER 3D GLASS STACK                    -->
+<!-- ====================================================================== -->
+<section class="chapter-head" id="ch-loop">
+  <div class="chapter-kicker">Chapter V · Closed-Loop Unification</div>
+  <h2>One physical law closes the loop: <em>drift in free space, force in contact</em></h2>
+</section>
+
+<section class="prose-band">
+  <p>This exact command–state principle also resolves online adaptation under unknown drift. Gating residual estimation strictly to free space freezes <strong>74.7%</strong> of contact chunks so grasp force stays uncorrupted, lifting a frozen <code>Qwen3-VL-2B</code> policy at <code>k=32</code> from <strong>32.0%</strong> (open-loop) and <strong>52.0%</strong> (blind feedback) to <strong>56.7%</strong> under <code>+0.07</code> drift and <strong>50.0%</strong> under <code>+0.10</code> drift at <strong>zero extra VLM tokens</strong>. Across the broader field, we think this separation explains the emerging four-tier stack linking episodic agents (<code>RoboThink</code>,<sup class="fn">5</sup> <code>AMP1</code><sup class="fn">24</sup>), discrete codecs,<sup class="fn">4,11</sup> continuous experts (<code>MR0</code>,<sup class="fn">3</sup> <code>SANA-Robot</code><sup class="fn">23</sup>), and compliant force executors.</p>
+</section>
+
+<!-- FILM 05: 3D DRIFT WIND-TUNNEL TABLETOP & 4-TIER LEVITATING GLASS STACK -->
+<div class="film-wrap">
+  <figure class="film-card" style="margin:0;">
+    <div class="film-viewport" id="vp-loop">
+      <div class="film-badge"><span class="pulse"></span><span>Film V · <em>Closed-Loop Drift Rescue &amp; 4-Tier Architecture</em></span></div>
+      <div class="film-orbit-hint">Drag to orbit · Switch 3D scene</div>
+      <div class="film-subtitle" id="sub-loop">Under unknown +0.07 lateral drift, the right arm cancels bias in free space and raises an emerald contact-frozen shield during grasp at 0 extra VLM tokens.</div>
+    </div>
+    <div class="film-bar">
+      <div class="ctrl-row" id="f5-scenes">
+        <button type="button" class="fbtn on" data-f5s="tabletop">3D Drift Tabletop Film</button>
+        <button type="button" class="fbtn amber" data-f5s="stack">3D 4-Tier 2027 Glass Stack</button>
+      </div>
+      <span class="fslider-lbl">k=32 @ +0.07 drift: Open 32% → Blind 52% → Contact-Gated 56.7%</span>
+    </div>
+  </figure>
+  <p class="film-caption"><strong>Film V · Contact-gated feedback &amp; hierarchical control (Exp 5 &amp; Exp 8).</strong> Switch between the dual-arm drift wind-tunnel simulation (with live Exp 8 phase curve) and the levitating four-tier architectural stack.</p>
+</div>
+
+<!-- ====================================================================== -->
+<!-- EPILOGUE · THREE OPEN FRONTIERS & REFERENCES                           -->
+<!-- ====================================================================== -->
+<section class="chapter-head" id="ch-outlook">
+  <div class="chapter-kicker">Epilogue · Looking Ahead</div>
+  <h2>Three physical frontiers <em>for 2027</em></h2>
+</section>
+
+<section class="prose-band">
+  <p>Looking forward, we think three open questions define the next generation of physical action representations. Extending task-space and force tokenization to 20–24 DoF dexterous hands calls for factored finger synergies that tame the <code>+48%</code> to <code>+154%</code> token blowup of joint covers; integrating morphology-aware reach critics can anticipate kinematic walls such as Kinova3's <code>130/151</code> IK ceiling; and uniting episodic agentic memory<sup class="fn">5,24</sup> with continual low-level consolidation offers a path toward robots that steadily refine their physical skill in the real world.</p>
+</section>
+
+<div class="drawer-wrap">
+  <details class="appendix">
+    <summary>Appendix Table IV · Late-2026 Action Representation Landscape (15 Systems) &amp; Protocol Provenance</summary>
+    <div class="appendix-body">
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>System</th><th>Tier</th><th>Core Mechanism</th><th>Headline Signal</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ActionCodec2</strong><sup class="fn">4</sup></td><td>Tokenizer + Loop</td><td>Non-neural cover + Set-BPE + residual correction + VLM macros</td><td>8.8 tok/s across 24 robots; zero codec training</td></tr>
+            <tr><td><strong>RoboMorpher</strong><sup class="fn">12</sup></td><td>Cross-Emb. Codec</td><td>Morphology-conditioned on 40M states w/ joint + 3D link-pose loss</td><td>−17.94 pp EmbodiBench without 3D link-pose loss</td></tr>
+            <tr><td><strong>BiCAT</strong><sup class="fn">13</sup></td><td>Bimanual Codec</td><td>Cross-arm factorized parallel dual-block autoregression</td><td>+17.6 pp RoboTwin 2.0; 40.5 ms/chunk</td></tr>
+            <tr><td><strong>CIALLO</strong><sup class="fn">14</sup></td><td>Shared Intent</td><td>8-robot intent codec + 174K-param calibrator</td><td>≤10 s new-robot calibration; 76.7% vs 70.0% π<sub>0</sub></td></tr>
+            <tr><td><strong>UniLatent</strong><sup class="fn">15</sup> / <strong>BATCH</strong><sup class="fn">16</sup></td><td>Space Alignment</td><td>Latent obs alignment / human–robot cycle consistency</td><td>Up to 93% zero-shot; 27/30 real xArm → Franka</td></tr>
+            <tr><td><strong>AIRoA-0</strong><sup class="fn">17</sup> / <strong>Pixel</strong><sup class="fn">18</sup></td><td>Data &amp; Hardware</td><td>16,151 h handheld video (0 robot data) / wheeled humanoid</td><td>78% vs 27% VLAs without robot pretraining</td></tr>
+            <tr><td><strong>Social Humanoid</strong><sup class="fn">19</sup> / <strong>UIE</strong><sup class="fn">20</sup></td><td>Humanoid Body</td><td>260 h HHI VQ space (G1) / 55.6M inertial velocity encoder</td><td>0.099 m/s zero-shot velocity on real G1</td></tr>
+            <tr class="hl-amber"><td><strong>C1F+D3F &amp; CSDW</strong><sup class="fn">21</sup></td><td>Contact Physics</td><td>Task-space pose + sparse deadband Newton force channel</td><td>30.8% active → 81.7% 3-arm rescue (beats 100% dense)</td></tr>
+            <tr><td><strong>Beyond Val Loss</strong><sup class="fn">2</sup></td><td>Post-Training</td><td><code>pass@k</code> coverage vs. reliability diagnostics</td><td>EMA 30k 93.3% pass@4 vs Raw 84.0% despite rising CE</td></tr>
+            <tr class="hl"><td><strong>MR0</strong><sup class="fn">3</sup> / <strong>SANA-Robot</strong><sup class="fn">23</sup></td><td>Hierarchical VLA</td><td>Discrete pretrain → flow-matching + CFG-DAgger / 30 Hz WAM</td><td>MR0 93.6% RoboTwin 2.0; SANA 115 ms on RTX 5090</td></tr>
+            <tr class="hl"><td><strong>RoboThink</strong><sup class="fn">5</sup> / <strong>AMP1</strong><sup class="fn">24</sup></td><td>Agentic Loop</td><td>Sparse <code>[INST]</code>/<code>[FB]</code> DAgger / zero-training episodic memory</td><td>Drift 0.09→0.87 (8k tok); AMP1 85.6% &amp; 4.6× fewer fails</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:14px;font-size:13.5px;color:var(--ink-3);"><strong>Protocol hygiene:</strong> All LIBERO evaluations read strictly from the development split (<code>eval_idx &lt; 25</code>; sealed test half <code>25–49</code> untouched). Covering vocabularies are fitted from scratch on public RoboCOIN and LIBERO training data without loading external codec weights. All six 3D interactive films render directly from verified experimental JSONs.</p>
+    </div>
+  </details>
+</div>
+
+<section class="notes-band" id="notes">
+  <h3>References</h3>
+  <ol class="ref-list" id="notes-list"></ol>
+  <div class="cite-box">
+    <button type="button" class="copy-btn" id="copy-bib">Copy BibTeX</button>
+    <pre id="bib-text" style="margin:0;">@misc{beyond_compression_action_tokenization_2026,
+  title  = {Beyond Compression: The Physics of Action Tokenization},
   year   = {2026},
   month  = {November},
   url    = {https://lixuan27.github.io/action-tokenization/}
 }</pre>
-      </div>
-    </section>
-  </main>
-</div>
+  </div>
+</section>
 
 <footer class="site-foot">
   <div class="site-foot-inner">
-    <div><strong>Action Tokenization (of What?)</strong> · Empirical Handbook · Nov 2026</div>
-    <div>All six living architectural plates render directly from verified experimental data.</div>
+    <div><strong>Beyond Compression: The Physics of Action Tokenization</strong> · Nov 2026</div>
+    <div>Six real-time 3D WebGL architectural studies powered by verified empirical data.</div>
   </div>
 </footer>
 
-<!-- FOOTNOTE DEFINITIONS (Auto-wired to hover popovers + #notes-list) -->
+<!-- FOOTNOTE DEFINITIONS (1..24) -->
 <aside class="fnote" data-n="1">Karl Pertsch et al. <a href="https://arxiv.org/abs/2501.09747">FAST: Efficient Action Tokenization for Vision-Language-Action Models</a>. 2025.</aside>
 <aside class="fnote" data-n="2">Yuejiang Sun, Shuran Song, et al. <a href="https://arxiv.org/abs/2611.01565">Beyond Validation Loss: Understanding the Pretraining-to-Posttraining Dynamics of Action Policies</a>. arXiv:2611.01565, Nov 2026.</aside>
 <aside class="fnote" data-n="3">Meituan Robotics Team. <a href="https://arxiv.org/abs/2611.08577">Meituan-Robotics-0: Scaling VLA Foundation Models via Discrete-to-Continuous Pretraining and Event-Driven Closed-Loop Execution</a>. arXiv:2611.08577, Nov 2026.</aside>
@@ -435,6 +383,7 @@
 <aside class="fnote" data-n="23">Zhijian Liu et al. <a href="https://arxiv.org/abs/2611.28943">SANA-Robot: Constant-Cost Hybrid Memory World-Action Models at 30 Hz</a>. arXiv:2611.28943, Nov 2026.</aside>
 <aside class="fnote" data-n="24">AMP1 Authors. <a href="https://arxiv.org/abs/2611.09892">On Agentic Manipulation Policies (AMP1): Zero-Demonstration Control with Persistent Cross-Embodiment Memory</a>. arXiv:2611.09892, Nov 2026.</aside>
 
+<script src="vendor/three.min.js"></script>
 <script src="data.js"></script>
 <script src="charts.js"></script>
 </body>
