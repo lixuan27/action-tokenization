@@ -433,9 +433,9 @@
 
     let playing = true, clock = 1.2, lastTs = null;
     const subs = [
-      '<strong>Act I · The Offline Trap</strong> — Pushing offline precision leftward (<em>Bin256 · 1.2 mm</em>) leaves closed-loop policy success flat at 17.0%.',
-      '<strong>Act II · Climbing the Physical Ridge</strong> — Causal decoding, task-space alignment, and sparse Newton force lift control directly to 74–82%.',
-      '<strong>Act III · Nine Controlled Studies</strong> — Drag anywhere in 3D to inspect how a single fixed Qwen3-VL-2B backbone responds across representations.',
+      '<strong>Act I · Beyond Offline Compression</strong> — Pushing open-loop precision leftward (<em>Bin256 at 1.2 mm</em>) leaves closed-loop policy success flat at 17.0%.',
+      '<strong>Act II · Climbing the Physical Ridge</strong> — Grounding action tokens in causal timing and 3D contact physics lifts execution directly onto the 74–82% ridge.',
+      '<strong>Act III · Serving Frontier LLM Agents</strong> — Drag anywhere in 3D to inspect how a single Qwen3-VL-2B backbone responds across physical representations.',
     ];
 
     function loop(ts) {
@@ -1584,10 +1584,10 @@
     st.scene.add(stackGrp);
 
     const tierMeta = [
-      { y: 3.15, name: 'Tier 1 · Episodic Agent (0.1–1 Hz)', sub: 'RoboThink · AMP1', hex: COL.purple, css: COL.cssPurple },
-      { y: 2.25, name: 'Tier 2 · Discrete Bridge (1–5 Hz)', sub: 'Cover · ActionCodec2 · OAT', hex: COL.blue, css: COL.cssBlue },
-      { y: 1.35, name: 'Tier 3 · Continuous Expert (20–30 Hz)', sub: 'MR0 · SANA-Robot', hex: COL.teal, css: COL.cssTeal },
-      { y: 0.45, name: 'Tier 4 · Force Executor (200–1000 Hz)', sub: 'C1F+D3F · Contact-Gated [FB]', hex: COL.amber, css: COL.cssAmber },
+      { y: 3.15, name: 'Tier 1 · Frontier LLM Agent (0.1–1 Hz)', sub: 'Opus-class Planner · RoboThink · AMP1', hex: COL.purple, css: COL.cssPurple },
+      { y: 2.25, name: 'Tier 2 · Discrete Action Bridge (1–5 Hz)', sub: 'Cover · ActionCodec2 · OAT (C1)', hex: COL.blue, css: COL.cssBlue },
+      { y: 1.35, name: 'Tier 3 · Continuous Motion Expert (20–30 Hz)', sub: 'MR0 · SANA-Robot', hex: COL.teal, css: COL.cssTeal },
+      { y: 0.45, name: 'Tier 4 · Force & Drift Reflex (200–1000 Hz)', sub: 'C1F+D3F · Contact-Gated [FB]', hex: COL.amber, css: COL.cssAmber },
     ];
     tierMeta.forEach((tm, idx) => {
       const wSlab = 3.8 + idx * 0.42;
@@ -1734,8 +1734,8 @@
       sceneBtns.forEach((x) => x.classList.toggle('on', x === b));
       if (subEl) {
         subEl.innerHTML = activeScene === 'tabletop'
-          ? 'Under unknown +0.07 lateral drift, the right arm cancels bias in free space and raises an emerald contact-frozen shield during grasp at 0 extra VLM tokens.'
-          : '<strong>The 2027 4-Tier Stack</strong> — Cobalt plans cascade down from episodic memory to force executors while amber physical residuals rise back up.';
+          ? 'Under unknown +0.07 lateral drift, the right arm cancels bias in free space and raises an emerald contact-frozen shield during grasp at zero extra reasoning tokens.'
+          : '<strong>The LLM-to-Action Stack</strong> — Frontier LLM agents issue semantic plans downward while the lower action tiers handle timing, 3D geometry, and compliant force locally.';
       }
     }));
 
