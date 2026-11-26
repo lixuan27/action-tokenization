@@ -42,53 +42,55 @@
     <span>Six Interactive 3D Studio Films</span>
   </div>
   <h1>Beyond Compression<em>The Physics of Action Tokenization</em></h1>
-  <p class="monograph-dek">As frontier LLM agents solve high-level planning, the action layer becomes the decisive bridge that turns semantic intent into compliant physical control across embodiments.</p>
+  <p class="monograph-dek">As frontier LLM agents take over high-level planning, the action layer beneath them decides whether semantic plans actually succeed in physical contact and across different robot bodies.</p>
 </header>
 
 <section class="prose-band">
-  <p>Frontier LLM agentic systems such as Opus-class reasoning models have established a strong new consensus in robotics by handling high-level task decomposition and long-horizon planning reliably. Because strategic reasoning now works well at the top of the stack, we think the central bottleneck of embodied AI has moved directly to the physical action layer beneath the agent. In this era, an action representation serves as the embodiment-agnostic contract that translates a planner's semantic subgoals into responsive physical control across diverse robot bodies.</p>
+  <p>Frontier LLM agents such as Opus-class reasoning models have rapidly become reliable high-level planners for robotics. Because task decomposition and symbolic reasoning now work well at the top of the stack, we think the decisive bottleneck in embodied AI has shifted down to the action layer. In practice, this layer serves as the contract that turns a planner's semantic intent into smooth and forceful control across different physical robots.</p>
 
-  <p>Within this fast-moving ecosystem, non-neural codecs such as <code>ActionCodec2</code><sup class="fn">1,4,6</sup> alongside morphology-aware encoders like <code>RoboMorpher</code><sup class="fn">12</sup> and <code>CIALLO</code><sup class="fn">14</sup> already compress trajectories across dozens of robots with minimal reconstruction error. Holding a single <code>Qwen3-VL-2B</code> backbone fixed across nine controlled diagnostic studies, we observe that an action layer designed to serve frontier LLM agents needs to go beyond offline compression. Starting from mid-flight decoding and advancing progressively through trajectory coverage, canonical 3D grounding, and impedance contact physics, our studies show how the action stack absorbs low-level physical complexity locally so high-level reasoning agents can operate seamlessly across embodiments.</p>
+  <p>Most research on action tokenizers still evaluates them by how tightly they reconstruct demonstrations offline.<sup class="fn">1,4,6</sup> Holding a single <code>Qwen3-VL-2B</code> backbone fixed across nine controlled experiments, we observe that low offline error tells us surprisingly little about closed-loop control. Below, we walk through five concrete mechanisms—each paired with an interactive 3D study—explaining why action representations succeed or fail in the real world and what we think builders should take away when designing an action stack beneath an LLM agent.</p>
 </section>
 
 <!-- FILM 00: 3D TOPOGRAPHIC GROUNDING RIDGE -->
 <div class="film-wrap">
   <figure class="film-card" style="margin:0;">
     <div class="film-viewport" id="vp-hero">
-      <div class="film-badge"><span class="pulse"></span><span>Prologue · <em>The Physical Grounding Surface</em></span></div>
+      <div class="film-badge"><span class="pulse"></span><span>Prologue · <em>Why Offline Fidelity Diverges from Control</em></span></div>
       <div class="film-orbit-hint">Drag to orbit in 3D</div>
-      <div class="film-subtitle" id="sub-hero">Offline reconstruction rises leftward along the flat valley while closed-loop control climbs the orthogonal ridge of physical grounding.</div>
+      <div class="film-subtitle" id="sub-hero">Offline precision improves leftward along the flat valley while closed-loop control climbs the orthogonal ridge of physical structure.</div>
     </div>
     <div class="film-bar">
       <div class="ctrl-row">
         <button type="button" class="fbtn on" id="hero-play">❚❚ Pause Crane</button>
         <button type="button" class="fbtn" id="hero-reset">Reset Camera</button>
       </div>
-      <span class="fslider-lbl">7 verified operating points across fixed Qwen3-VL-2B &amp; multi-arm studies</span>
+      <span class="fslider-lbl">Empirical control surface across fixed Qwen3-VL-2B &amp; multi-arm studies</span>
     </div>
   </figure>
-  <p class="film-caption"><strong>Film 00 · From offline bitrate to physical grounding.</strong> Near-lossless quantization (<code>Bin256</code> at 1.2 mm error) remains on the 17.0% floor, whereas causal decoding paired with task-space grounding and sparse force pulses lifts execution cleanly onto the 74–82% ridge.</p>
+  <p class="film-caption"><strong>Film 00 · Offline bitrate versus physical structure.</strong> Near-lossless quantization (<code>Bin256</code>) stays on the 17% floor despite millimeter accuracy, whereas causal timing, task-space grounding, and sparse force pulses lift execution onto the high-success ridge.</p>
 </div>
 
 <!-- ====================================================================== -->
 <!-- CHAPTER I · DECODING GEOMETRY & ANYTIME CONTROL                        -->
 <!-- ====================================================================== -->
 <section class="chapter-head" id="ch-decoding">
-  <div class="chapter-kicker">Chapter I · Decoding Geometry</div>
-  <h2>Cutting the token stream <em>mid-flight</em></h2>
+  <div class="chapter-kicker">Chapter I · Token Order &amp; Latency</div>
+  <h2>Token order decides whether a policy can <em>stop decoding early</em></h2>
 </section>
 
 <section class="prose-band">
-  <p>When a frontier LLM agent monitors the scene and issues updated subgoals, the action layer beneath it needs to respond smoothly under strict latency budgets.<sup class="fn">7,8,9,10</sup> Because zero-parameter geometric codecs already lead the rate–distortion curve,<sup class="fn">1,4,6</sup> we think the decisive property of a discrete vocabulary is how gracefully it behaves when truncated mid-stream. Ordering tokens causally along time allows <code>Cover (EEF)</code> to stop halfway at step 16—reducing generation from <code>50.3</code> to <code>25.2</code> tokens for a <strong>1.85× speedup</strong> (<code>143.2 → 77.2 ms</code>) while maintaining <strong>76.0%</strong> LIBERO-Spatial success alongside <strong>84.0%</strong> at full length. Similarly, ordering tokens progressively from coarse to fine enables <code>OAT (Joint)</code><sup class="fn">11</sup> to step down from <code>16</code> to <code>8</code> tokens (<code>19.0 ms</code>) while holding <strong>80.0%</strong> success, providing upper-level planners with an interruptible and adaptive execution interface.</p>
+  <p>When a frontier LLM agent updates a plan in real time, the action decoder beneath it often needs to cut latency without retraining.<sup class="fn">7,8,9,10</sup> We observe that whether a policy survives early truncation depends almost entirely on how the tokenizer orders information across positions. In a global spectral codec like <code>FAST</code>,<sup class="fn">1</sup> early tokens carry global frequency components, so dropping later tokens or perturbing one early token distorts the entire trajectory. By contrast, ordering tokens causally along time in <code>Cover</code><sup class="fn">4</sup> lets the decoder stop halfway through a chunk—running <strong>1.85× faster</strong> while preserving closed-loop execution—because the prefix already defines the exact steps the robot executes first. Similarly, ordering tokens from coarse to fine in <code>OAT</code><sup class="fn">11</sup> holds <strong>80%</strong> success at half the tokens because early slots already capture the main motion shape.</p>
+
+  <p>Our takeaway is straightforward: we think action vocabularies should adopt causal or coarse-to-fine ordering so upper-level agents can trade decoding compute for reaction speed on demand.</p>
 </section>
 
 <!-- FILM 01: 3D VOLUMETRIC TOKEN RIBBON & MULTI-CODEC TRAJECTORIES -->
 <div class="film-wrap">
   <figure class="film-card" style="margin:0;">
     <div class="film-viewport" id="vp-anytime">
-      <div class="film-badge"><span class="pulse"></span><span>Film I · <em>Volumetric Token Stream &amp; Mid-Flight Truncation</em></span></div>
-      <div class="film-orbit-hint">Drag to orbit · Scroll or scrub gate</div>
-      <div class="film-subtitle" id="sub-anytime">A translucent cobalt laser gate slices the token stream mid-flight—watch how five real 32-step LIBERO trajectories morph in 3D space.</div>
+      <div class="film-badge"><span class="pulse"></span><span>Film I · <em>Token Order Under Early Stopping</em></span></div>
+      <div class="film-orbit-hint">Drag to orbit · Scrub budget gate</div>
+      <div class="film-subtitle" id="sub-anytime">Drag the cobalt budget gate to see why causal and coarse-to-fine token orders preserve trajectory shape when decoding stops early.</div>
     </div>
     <div class="film-bar">
       <div class="ctrl-row">
@@ -102,13 +104,13 @@
         <span class="fslider-val" id="f1-val">55%</span>
       </div>
       <div class="ctrl-row" id="f1-blast-wrap" style="display:none;">
-        <button type="button" class="fbtn amber on" data-bcodec="FAST">FAST (688 mm)</button>
-        <button type="button" class="fbtn" data-bcodec="OAT">OAT (4.3× taper)</button>
-        <button type="button" class="fbtn" data-bcodec="Bin256">Bin256 (local)</button>
+        <button type="button" class="fbtn amber on" data-bcodec="FAST">FAST (global cliff)</button>
+        <button type="button" class="fbtn" data-bcodec="OAT">OAT (smooth taper)</button>
+        <button type="button" class="fbtn" data-bcodec="Bin256">Bin256 (local glitch)</button>
       </div>
     </div>
   </figure>
-  <p class="film-caption"><strong>Film I · Anytime decoding &amp; perturbation geometry (Exp 1 &amp; Exp 6).</strong> Real 3D end-effector paths reconstructed from LIBERO trajectories, paired in the upper right with live 50-episode <code>Qwen3-VL-2B</code> closed-loop truncation curves.</p>
+  <p class="film-caption"><strong>Film I · Why token order controls early stopping (Exp 1 &amp; Exp 6).</strong> Real 32-step LIBERO end-effector paths reconstructed under truncation, paired with closed-loop <code>Qwen3-VL-2B</code> evaluations in the upper right.</p>
 </div>
 
 <div class="drawer-wrap">
@@ -131,33 +133,35 @@
 <!-- CHAPTER II · COVERAGE FAN & PHYSICAL FAILURE ANATOMY                   -->
 <!-- ====================================================================== -->
 <section class="chapter-head" id="ch-contact">
-  <div class="chapter-kicker">Chapter II · Coverage &amp; Contact</div>
-  <h2>How trajectory coverage and contact physics <em>govern execution</em></h2>
+  <div class="chapter-kicker">Chapter II · Coverage &amp; Failure Diagnosis</div>
+  <h2>Validation loss misses trajectory diversity and <em>physical contact</em></h2>
 </section>
 
 <section class="prose-band">
-  <p>Moving from token timing to closed-loop reliability, we train six action vocabularies under one identical <code>Qwen3-VL-2B</code> recipe to inspect how training metrics connect to physical execution. Following recent findings on post-training dynamics,<sup class="fn">2</sup> we observe that validation cross-entropy drifts upward past <code>12k</code> steps even as exponential moving average weights expand stochastic trajectory coverage to <strong>93.3%</strong> <code>pass@4</code> alongside <strong>84.0%</strong> for raw weights. Tracing 200 live rollouts step by step further demonstrates that <strong>72.2%</strong> of missed episodes concentrate inside two concrete physical regimes—<strong>contact stalls</strong> (<code>40.5%</code>) and <strong>grasp slips</strong> (<code>31.6%</code>)—showing us that dependable subgoal execution beneath an LLM planner rests directly on spatial alignment and contact force.</p>
+  <p>Training six tokenizers on the same <code>Qwen3-VL-2B</code> backbone reveals a striking disconnect between training curves and real execution. Following recent findings on policy post-training dynamics,<sup class="fn">2</sup> we observe that validation cross-entropy begins rising midway through training even as closed-loop performance keeps improving. This happens because cross-entropy penalizes multimodal uncertainty harshly, whereas maintaining an exponential moving average of model weights preserves diverse valid trajectories—lifting stochastic <code>pass@4</code> coverage to <strong>93%</strong> compared with <strong>84%</strong> for raw weights. Tracing 200 live rollouts explains why capable policies still miss tasks: <strong>72%</strong> of failures happen directly inside physical contact, where the gripper either presses against an object without moving or slips repeatedly during grasp.</p>
+
+  <p>We think this yields a clear diagnostic takeaway: selecting checkpoints by validation loss hides both multimodal diversity and physical contact failure, so tracking stochastic <code>pass@k</code> alongside contact-level rollout traces gives a far truer signal of policy readiness.</p>
 </section>
 
 <!-- FILM 02: 3D ARTICULATED GRIPPER & COVERAGE FAN -->
 <div class="film-wrap">
   <figure class="film-card" style="margin:0;">
     <div class="film-viewport" id="vp-coverage">
-      <div class="film-badge"><span class="pulse"></span><span>Film II · <em>Coverage Fan &amp; Physical Contact Anatomy</em></span></div>
+      <div class="film-badge"><span class="pulse"></span><span>Film II · <em>EMA Diversity &amp; Contact Failure Regimes</em></span></div>
       <div class="film-orbit-hint">3-beat director camera · Drag to orbit</div>
-      <div class="film-subtitle" id="sub-coverage">Beat 1 — EMA 30k fans out across diverse approach arcs (93.3% pass@4), whereas Raw 30k narrows into a single brittle corridor.</div>
+      <div class="film-subtitle" id="sub-coverage">EMA weights preserve diverse approach arcs (93% pass@4) while 72% of missed rollouts occur inside physical contact stalls and grasp slips.</div>
     </div>
     <div class="film-bar">
       <div class="ctrl-row" id="f2-beats">
         <button type="button" class="fbtn on" data-f2="auto">▶ 3-Beat Director Cut</button>
-        <button type="button" class="fbtn" data-f2="fan">EMA Coverage Fan</button>
-        <button type="button" class="fbtn amber" data-f2="stall">Contact Stall (40.5%)</button>
-        <button type="button" class="fbtn amber" data-f2="slip">Grasp Slip (31.6%)</button>
+        <button type="button" class="fbtn" data-f2="fan">EMA Diversity Fan</button>
+        <button type="button" class="fbtn amber" data-f2="stall">Contact Stall</button>
+        <button type="button" class="fbtn amber" data-f2="slip">Grasp Slip</button>
       </div>
-      <span class="fslider-lbl">Cover EEF 73.9% · FAST 70.0% · OAT 60.5% · Bin256 17.0%</span>
+      <span class="fslider-lbl">Same-backbone LIBERO leaderboard shown in upper-right card</span>
     </div>
   </figure>
-  <p class="film-caption"><strong>Film II · Inside 200 traced LIBERO rollouts (Exp 2).</strong> A 3D parallel-jaw wrist dramatizes the exact kinematic signatures measured across our failure audit alongside the 6-arm <code>Qwen3-VL-2B</code> leaderboard inset.</p>
+  <p class="film-caption"><strong>Film II · What validation loss misses on the tabletop (Exp 2).</strong> A 3D parallel-jaw wrist illustrates the multimodal coverage gap and the two physical contact regimes that account for most rollout failures.</p>
 </div>
 
 <div class="drawer-wrap">
@@ -180,21 +184,23 @@
 <!-- CHAPTER III · 3D CROSS-EMBODIMENT MANIFOLD MORPH                       -->
 <!-- ====================================================================== -->
 <section class="chapter-head" id="ch-manifold">
-  <div class="chapter-kicker">Chapter III · Cross-Embodiment Grounding</div>
-  <h2>Unifying diverse robot bodies <em>in canonical task space</em></h2>
+  <div class="chapter-kicker">Chapter III · Cross-Embodiment Semantics</div>
+  <h2>Low compression overhead on a new robot hides <em>separate joint dialects</em></h2>
 </section>
 
 <section class="prose-band">
-  <p>For a single frontier LLM agent to command different robots seamlessly, the action layer beneath it needs one shared geometric language that transfers cleanly across morphologies. Measuring joint-slot covering vocabularies across thirteen arms reveals a tiny <code>+0.2%</code> to <code>+3.5%</code> compression overhead, giving an appearance of cross-robot transfer at the syntax level. Inspecting 900 paired trajectories across five arms exposes the deeper geometry: joint-slot tokens partition motions into five robot-specific constellations with <strong>66.0%</strong> 10-NN robot-ID purity, pulling zero-shot 3D probe accuracy down to <code>R² = −1.30</code>. Grounding those exact motions in canonical task space (<code>C1</code>) dissolves the five dialects down to the <strong>22.4%</strong> random-mixing baseline while lifting cross-arm 3D motion alignment nearly threefold from <code>+0.243</code> to <code>+0.693</code>. We think this geometric principle explains why modern frameworks such as <code>RoboMorpher</code><sup class="fn">12</sup> and <code>CIALLO</code><sup class="fn">14</sup> anchor control in 3D kinematics or ten-second per-robot calibrators.<sup class="fn">13,15,16,17,18,19,20</sup></p>
+  <p>For one frontier LLM agent to direct different robots smoothly, the action layer needs shared physical meaning rather than just shared token IDs. Fitting a joint-space covering vocabulary across thirteen arms compresses unseen robots with minimal extra bitrate, which makes joint tokenization appear universal at first glance. Inspecting 900 paired trajectories across five arms explains why this transfer breaks down in practice: because every arm has its own link lengths and joint axes, the exact same 3D reach maps into completely different joint-angle tokens, locking each robot into its own cluster with <strong>66%</strong> robot-ID purity. Moving those exact motions into canonical task space dissolves the five dialects down to the <strong>22%</strong> random-mixing floor and lifts cross-arm 3D motion alignment nearly threefold.</p>
+
+  <p>We think this geometric split explains why recent cross-embodiment systems such as <code>RoboMorpher</code><sup class="fn">12</sup> and <code>CIALLO</code><sup class="fn">14</sup> supervise 3D link geometry directly or fit fast per-robot calibrators.<sup class="fn">13,15,16,17,18,19,20</sup> The practical takeaway is that bitrate alone never certifies cross-robot transfer; shared semantics require grounding action tokens in a canonical 3D frame.</p>
 </section>
 
 <!-- FILM 03: 900-SPHERE 3D MANIFOLD FLY-THROUGH & SPRING MORPH -->
 <div class="film-wrap">
   <figure class="film-card" style="margin:0;">
     <div class="film-viewport" id="vp-manifold">
-      <div class="film-badge"><span class="pulse"></span><span>Film III · <em>900 Paired 5-Arm Trajectories in 3D Space</em></span></div>
+      <div class="film-badge"><span class="pulse"></span><span>Film III · <em>Joint Dialects Collapsing Into Task Space</em></span></div>
       <div class="film-orbit-hint">Drag to fly through 3D manifold</div>
-      <div class="film-subtitle" id="sub-manifold">In Joint-Slot Cover space, five robot embodiments float in disjoint constellations (66.0% purity); click Morph to unite them in Task-Space C1.</div>
+      <div class="film-subtitle" id="sub-manifold">Joint-slot tokens lock five robots into separate constellations (66% purity); morphing to Task-Space C1 merges them into one physical world.</div>
     </div>
     <div class="film-bar">
       <div class="ctrl-row">
@@ -210,7 +216,7 @@
       </div>
     </div>
   </figure>
-  <p class="film-caption"><strong>Film III · 3D spectral embedding of 900 paired windows (Exp 3 &amp; Exp 9A).</strong> Five sculpted robot plinths ring the gallery floor while real 3D displacement clouds glide smoothly between joint syntax and canonical task space.</p>
+  <p class="film-caption"><strong>Film III · Why shared token syntax differs from shared physical semantics (Exp 3 &amp; Exp 9A).</strong> Five robot plinths surround 900 real paired trajectories morphing smoothly between joint syntax and canonical task space.</p>
 </div>
 
 <!-- ====================================================================== -->
@@ -218,20 +224,22 @@
 <!-- ====================================================================== -->
 <section class="chapter-head" id="ch-force">
   <div class="chapter-kicker">Chapter IV · Impedance Contact Physics</div>
-  <h2>Preserving impedance contact force <em>through sparse pulses</em></h2>
+  <h2>Replaying achieved poses erases contact force <em>in impedance control</em></h2>
 </section>
 
 <section class="prose-band">
-  <p>Examining the contact stalls identified in Chapter II leads us directly to the mechanics of compliant impedance control.<sup class="fn">21,22</sup> Under spring–damper tracking, physical contact force arises from the virtual spring deflection <code>p_cmd − p_meas</code> between the commanded setpoint and the measured gripper pose. Replaying achieved kinematic poses tracks a drawer trajectory within <strong>0.29 mm</strong> median error while flattening that spring to zero, causing Franka drawer success to fall from <strong>83%</strong> to <strong>14%</strong> and stalling unseen arms across our cross-embodiment suite. Separating kinematic motion from a sparse deadband-gated Newton force channel (<code>C1F+D3F</code>) resolves this mismatch cleanly. Activating on just <strong>30.8%</strong> of frames while normalizing automatically by controller stiffness <code>K_p</code>, this sparse channel lifts three-arm drawer rescue to <strong>81.7%</strong>—surpassing a <code>100%</code> continuous dense force stream (<strong>80.0%</strong>) and enabling a high-level LLM agent to command forceful manipulation independently of each robot's stiffness gains.</p>
+  <p>The physical contact stalls seen in Chapter II trace back to a fundamental property of compliant robot controllers.<sup class="fn">21,22</sup> Under impedance control, a robot generates pushing or pulling force purely from the virtual spring deflection between its commanded target and its measured pose (<code>p_cmd − p_meas</code>). When we tokenize and replay achieved poses from a demonstration, the gripper follows the recorded path within a remarkable <strong>0.29 mm</strong> error—yet because the command now sits right on top of the measured pose, the virtual spring stays completely flat and the drawer remains locked shut. Separating kinematic motion from a sparse deadband-gated Newton force channel (<code>C1F+D3F</code>) resolves this cleanly. Firing on just <strong>31%</strong> of frames while scaling automatically by each robot's stiffness <code>K_p</code>, this sparse channel reaches <strong>82%</strong> cross-arm drawer rescue and outperforms a dense force stream, because deadband gating keeps free-space motion crisp while delivering exact force during contact.</p>
+
+  <p>Our takeaway for cross-embodiment robotics is direct: pose-only action tokens discard the physics of forceful interaction, whereas a sparse Newton channel lets an upper-level planner command contact tasks reliably across robots with completely different stiffness gains.</p>
 </section>
 
 <!-- FILM 04: 3D FOUR-ARM STUDIO CABINET & HELICAL IMPEDANCE SPRINGS -->
 <div class="film-wrap">
   <figure class="film-card" style="margin:0;">
     <div class="film-viewport" id="vp-force">
-      <div class="film-badge"><span class="pulse amber"></span><span>Film IV · <em>Four-Arm 3D Impedance Springs &amp; Sticky Drawers</em></span></div>
+      <div class="film-badge"><span class="pulse amber"></span><span>Film IV · <em>Why Virtual Spring Deflection Controls Contact</em></span></div>
       <div class="film-orbit-hint">Drag to inspect 3D springs · Vary K_p</div>
-      <div class="film-subtitle" id="sub-force">C1F+D3F fires amber 5 mm Newton pulses on just 30.8% of frames—scaling spring stretch inversely with stiffness K_p so all four drawers open smoothly.</div>
+      <div class="film-subtitle" id="sub-force">Sparse amber Newton pulses fire on 31% of frames—scaling 3D spring stretch inversely with stiffness K_p so all four drawers open smoothly.</div>
     </div>
     <div class="film-bar">
       <div class="ctrl-row" id="f4-modes">
@@ -247,7 +255,7 @@
       </div>
     </div>
   </figure>
-  <p class="film-caption"><strong>Film IV · 3D multi-arm impedance mechanics &amp; Force-Sparsity Pareto (Exp 4 &amp; Exp 7).</strong> Watch the physical 3D helical springs connecting each gripper (<code>p_meas</code>) to its translucent ghost target (<code>p_cmd</code>), calibrated directly to our 1,680-episode sweep and 24-cell spring law.</p>
+  <p class="film-caption"><strong>Film IV · How sparse Newton pulses preserve contact force across stiffnesses (Exp 4 &amp; Exp 7).</strong> Watch the 3D helical springs connecting each gripper to its target ring, paired with the empirical sparsity Pareto frontier on the right.</p>
 </div>
 
 <div class="drawer-wrap">
@@ -270,45 +278,45 @@
 <!-- CHAPTER V · CLOSED-LOOP LAW & 4-TIER 3D GLASS STACK                    -->
 <!-- ====================================================================== -->
 <section class="chapter-head" id="ch-loop">
-  <div class="chapter-kicker">Chapter V · Adapting Beneath Frontier LLM Agents</div>
-  <h2>Closing the physical loop beneath <em>frontier LLM agents</em></h2>
+  <div class="chapter-kicker">Chapter V · Local Reflexes Beneath LLM Agents</div>
+  <h2>Separating free-space drift from contact force lets the action layer <em>self-correct</em></h2>
 </section>
 
 <section class="prose-band">
-  <p>This exact command–state principle also governs how the action layer adapts online when unexpected execution drift appears. Because tracking residuals measured in free space reflect kinematic bias while residuals measured during grasp reflect deliberate contact force, gating online feedback strictly to free space freezes <strong>74.7%</strong> of contact chunks and keeps grasp forces intact. Applying this lightweight local reflex lifts a frozen <code>Qwen3-VL-2B</code> policy at <code>k=32</code> from <strong>32.0%</strong> in open loop and <strong>52.0%</strong> with blind feedback up to <strong>56.7%</strong> under <code>+0.07</code> drift and <strong>50.0%</strong> under severe <code>+0.10</code> drift, accomplishing reliable recovery at <strong>zero extra reasoning tokens</strong>.</p>
+  <p>The same spring-deflection physics from Chapter IV also explains how an action layer should adapt online when unexpected execution drift appears. In free space, a steady gap between commanded motion and achieved motion reveals true kinematic drift. Once the gripper touches an object, however, that same gap reflects intentional contact force. Updating a drift estimator blindly mixes the two signals and creates drag during grasping. By gating residual updates strictly to free space—freezing estimation across <strong>75%</strong> of contact chunks—a frozen policy under unknown lateral drift climbs from <strong>32%</strong> open-loop success to <strong>57%</strong> at zero extra reasoning tokens.</p>
 
-  <p>Placing these four empirical findings inside the era of frontier LLM agentic systems clarifies the exact role of the action stack. Frontier reasoning models such as Opus-class agents<sup class="fn">5,24</sup> excel at top-level task planning and episodic reflection at <code>0.1–1 Hz</code>, while our three lower action tiers make their semantic plans physically executable across real hardware. Causal discrete tokenizers<sup class="fn">4,11</sup> supply an interruptible embodiment-invariant bridge at <code>1–5 Hz</code>; continuous motion experts such as <code>MR0</code><sup class="fn">3</sup> and <code>SANA-Robot</code><sup class="fn">23</sup> synthesize smooth <code>30 Hz</code> trajectories; and high-frequency force executors convert sparse Newton intent and free-space feedback into compliant physical interaction at <code>200–1000 Hz</code>, shielding the LLM planner from low-level physics while escalating clean physical events upward whenever semantic replanning is genuinely needed.</p>
+  <p>We think this clarifies the natural division of labor in the era of frontier LLM agents. Models such as Opus-class planners<sup class="fn">5,24</sup> handle high-level reasoning and episodic reflection cleanly at low frequency, while the action stack beneath them—combining causal discrete bridges,<sup class="fn">4,11</sup> smooth continuous motion experts like <code>MR0</code><sup class="fn">3</sup> and <code>SANA-Robot</code>,<sup class="fn">23</sup> and high-frequency force-and-drift reflexes—absorbs timing, geometry, contact force, and minor bias locally. The takeaway for system designers is clear: a physically grounded action layer shields the top-level LLM agent from noisy low-level physics and escalates upward only when genuine semantic replanning is needed.</p>
 </section>
 
 <!-- FILM 05: 3D DRIFT WIND-TUNNEL TABLETOP & 4-TIER LEVITATING GLASS STACK -->
 <div class="film-wrap">
   <figure class="film-card" style="margin:0;">
     <div class="film-viewport" id="vp-loop">
-      <div class="film-badge"><span class="pulse"></span><span>Film V · <em>Local Drift Reflex &amp; The LLM-to-Action Stack</em></span></div>
+      <div class="film-badge"><span class="pulse"></span><span>Film V · <em>Free-Space Drift Reflex &amp; The LLM-to-Action Stack</em></span></div>
       <div class="film-orbit-hint">Drag to orbit · Switch 3D scene</div>
-      <div class="film-subtitle" id="sub-loop">Under unknown +0.07 lateral drift, the right arm cancels bias in free space and raises an emerald contact-frozen shield during grasp at zero extra reasoning tokens.</div>
+      <div class="film-subtitle" id="sub-loop">Under unknown lateral drift, the right arm identifies bias in free space and freezes estimation inside an emerald contact shield at zero extra reasoning tokens.</div>
     </div>
     <div class="film-bar">
       <div class="ctrl-row" id="f5-scenes">
         <button type="button" class="fbtn on" data-f5s="tabletop">3D Drift Tabletop Film</button>
         <button type="button" class="fbtn amber" data-f5s="stack">3D LLM-to-Action Stack</button>
       </div>
-      <span class="fslider-lbl">k=32 @ +0.07 drift: Open 32% → Blind 52% → Contact-Gated 56.7%</span>
+      <span class="fslider-lbl">Free-space gating lifts drifted k=32 control from 32% to 57% at 0 extra tokens</span>
     </div>
   </figure>
-  <p class="film-caption"><strong>Film V · Local closed-loop reflexes &amp; hierarchical adaptation (Exp 5 &amp; Exp 8).</strong> Switch between the dual-arm drift tabletop film (paired with the live Exp 8 phase curve) and the levitating four-tier glass stack linking frontier LLM planners to high-frequency physical control.</p>
+  <p class="film-caption"><strong>Film V · Local closed-loop adaptation beneath frontier LLM agents (Exp 5 &amp; Exp 8).</strong> Switch between the dual-arm drift simulation and the four-tier architecture connecting top-level reasoning agents to compliant physical execution.</p>
 </div>
 
 <!-- ====================================================================== -->
 <!-- EPILOGUE · THREE OPEN FRONTIERS & REFERENCES                           -->
 <!-- ====================================================================== -->
 <section class="chapter-head" id="ch-outlook">
-  <div class="chapter-kicker">Epilogue · Looking Ahead</div>
-  <h2>Where physical action interfaces <em>go next</em></h2>
+  <div class="chapter-kicker">Epilogue · Open Frontiers</div>
+  <h2>What the action layer still needs to serve <em>frontier LLM agents</em></h2>
 </section>
 
 <section class="prose-band">
-  <p>Looking ahead, we think three concrete physical frontiers will make action layers even stronger partners for frontier LLM agents. Extending canonical task space and sparse force channels toward 20–24 DoF dexterous hands calls for factored finger synergies that tame the <code>+48%</code> to <code>+154%</code> bitrate expansion of joint vocabularies. Integrating morphology-aware kinematic reach critics can inform the upper-level planner before it requests infeasible poses such as Kinova3's <code>130/151</code> IK wall. Finally, coupling the persistent episodic memory of LLM agents<sup class="fn">5,24</sup> with continual low-level skill consolidation will allow embodied systems to turn real-world interaction into lasting motor competence.</p>
+  <p>Looking ahead, we think three open physical problems will shape how well action layers support frontier reasoning agents. Extending canonical 3D grounding and sparse force channels to multi-fingered dexterous hands requires factored synergies so token lengths stay compact as degrees of freedom grow. Adding morphology-aware reachability critics can inform an upper-level planner before it requests poses that lie outside a specific robot's kinematic workspace. Finally, connecting the persistent episodic memory of LLM agents<sup class="fn">5,24</sup> with continual low-level motor consolidation will allow robots to turn real-world physical experience into lasting skill.</p>
 </section>
 
 <div class="drawer-wrap">
