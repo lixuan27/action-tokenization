@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Action Tokenization (of What?) · An Interactive Empirical Scroll</title>
+<meta name="description" content="An interactive visual scroll on cross-embodiment robot action tokenization: real MuJoCo multi-arm cinema, live anytime decoding, 900-trajectory manifold morphing, spring-contact physics, and closed-loop feedback.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231A73E8'/%3E%3Cstop offset='1' stop-color='%23E77500'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%230B0E14'/%3E%3Ccircle cx='16' cy='16' r='8' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#hero"><span class="brand-orb"></span><span>Action Tokenization (of What?)</span></a>
+    <nav class="nav" aria-label="Chapters">
+      <a href="#act-anytime">01 Anytime</a>
+      <a href="#act-policies">02 Policies</a>
+      <a href="#act-manifold">03 Manifold</a>
+      <a href="#act-paradox">04 Contact</a>
+      <a href="#act-closedloop">05 Closed-Loop</a>
+      <a href="https://github.com/lixuan27/action-tokenization" target="_blank" rel="noopener" class="nav-pill">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="dot-rail" aria-label="Quick jump">
+  <a href="#hero" data-label="Opening Cinema" class="active"></a>
+  <a href="#act-anytime" data-label="01 Anytime & Perturbation"></a>
+  <a href="#act-policies" data-label="02 Four Policies, One Scene"></a>
+  <a href="#act-manifold" data-label="03 900-Trajectory Manifold"></a>
+  <a href="#act-paradox" data-label="04 Quad-Arm Contact Rescue"></a>
+  <a href="#act-closedloop" data-label="05 Drift vs. Contact [FB]"></a>
+  <a href="#act-landscape" data-label="06 Landscape & References"></a>
+</nav>
+
+<!-- ====================================================================== -->
+<!-- OPENING HERO · FULL-WIDTH REAL MUJOCO 4-WAY CINEMA                     -->
+<!-- ====================================================================== -->
+<section class="hero-band" id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span>Nov 2026 · Interactive Research Scroll</span>
+      <span class="pill">Cross-Embodiment Robotics</span>
+      <span class="pill amber">9 Live Diagnostic Studies · 5 MuJoCo Cinemas</span>
+    </div>
+    <h1 class="hero-title">Action Tokenization <span class="grad">(of What?)</span></h1>
+    <p class="hero-dek">What cross-embodiment robotics learned when offline reconstruction stopped being enough—told through live MuJoCo physics, interactive token sandboxes, and controlled Qwen3-VL-2B policies.</p>
+
+    <!-- REAL MUJOCO 4-WAY HERO CINEMA -->
+    <div class="cinema-frame" data-cinema="hero">
+      <div class="cinema-bar">
+        <div class="cinema-title"><span class="live-pulse"></span><span>Live Physics · Unseen Cabinet Drawer Pull (Franka · 4 Control Representations)</span></div>
+        <div class="cinema-ctrls">
+          <button type="button" class="cbtn on" data-play>❚❚ Pause</button>
+          <button type="button" class="cbtn" data-rate="0.5">0.5×</button>
+          <button type="button" class="cbtn on" data-rate="1">1×</button>
+          <button type="button" class="cbtn" data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="cinema-stage">
+        <video autoplay loop muted playsinline preload="auto" src="media/cinema_franka_4way.mp4"></video>
+      </div>
+      <div class="cinema-foot">
+        <span><strong>Watch tile 3 vs. tile 4:</strong> achieved-pose replay tracks within <strong>1.0 mm</strong> yet leaves the drawer shut (1.2 N); adding a sparse 5 mm <strong style="color:#F59E0B;">force-intent pulse</strong> restores 150 N and opens it cleanly.</span>
+        <div class="cinema-scrub-wrap">
+          <span class="cinema-time" data-time>0.0s / 6.6s</span>
+          <input type="range" min="0" max="1000" value="0" data-scrub aria-label="Scrub video">
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-strip reveal">
+      <div class="stat-tile">
+        <div class="stat-num amber">0.29 mm</div>
+        <div class="stat-lbl">Median tracking error on <em>failed</em> Franka drawer replays — tighter than successes (0.32 mm)</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num green">0% → 75%</div>
+        <div class="stat-lbl">Unseen UR5e &amp; IIWA top-drawer rescue by adding sparse Newton force-intent tokens</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num blue">+54.6 pp</div>
+        <div class="stat-lbl">Same Qwen3-VL-2B + same Cover codec jumping from Joint (19.3%) to EEF space (73.9%)</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num red">72.2%</div>
+        <div class="stat-lbl">Share of LIBERO "timeouts" (57/79) that are actually physical contact stalls &amp; grasp slips</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5-CARD VISUAL STORY SPINE -->
+<section class="spine-band">
+  <div class="spine-grid reveal">
+    <a class="spine-card" href="#act-anytime">
+      <span class="spine-n">01 · ANYTIME &amp; BLAST</span>
+      <span class="spine-t">MSE lies; perturbation &amp; causality rule</span>
+      <span class="spine-s">FAST detonates 688 mm on 1 DC error; causal Cover skips 50% tail tokens zero-shot.</span>
+    </a>
+    <a class="spine-card" href="#act-policies">
+      <span class="spine-n">02 · VAL LOSS VS CONTROL</span>
+      <span class="spine-t">EMA saves coverage; contact stalls dominate</span>
+      <span class="spine-s">Val CE rises after 12k while EMA 30k hits 93.3% pass@4 vs. Raw 84.0%.</span>
+    </a>
+    <a class="spine-card" href="#act-manifold">
+      <span class="spine-n">03 · SYNTAX ≠ SEMANTICS</span>
+      <span class="spine-t">5 disjoint joint islands → 1 physical manifold</span>
+      <span class="spine-s">Joint Cover compresses +0.2–3.5% yet fails zero-shot (R² down to −4.36).</span>
+    </a>
+    <a class="spine-card" href="#act-paradox">
+      <span class="spine-n">04 · FORCE INTENT</span>
+      <span class="spine-t">Pose tokens erase spring force</span>
+      <span class="spine-s">Sparse deadband Newton pulses beat raw OSC on UR5e, IIWA &amp; Kinova3.</span>
+    </a>
+    <a class="spine-card" href="#act-closedloop">
+      <span class="spine-n">05 · CLOSED-LOOP LAW</span>
+      <span class="spine-t">Free space = drift; contact = force</span>
+      <span class="spine-s">Free-space-gated [FB] cancels drift at 0 extra VLM tokens without contact drag.</span>
+    </a>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- ACT I · INTERACTIVE ANYTIME DECODING & PERTURBATION PLAYGROUND         -->
+<!-- ====================================================================== -->
+<section class="act alabaster" id="act-anytime">
+  <div class="act-inner">
+    <div class="act-head reveal">
+      <div class="act-kicker"><span>Act 01</span><span class="amber-dot"></span><span>Decoding Geometry &amp; Anytime Control</span></div>
+      <h2>Cut the token stream mid-flight—and watch five codecs break differently.</h2>
+      <p class="plaque">Zero-parameter spectral and geometric codecs already beat 1,300-GPU-hour neural autoencoders at every bitrate.<sup class="fn">1,4,6</sup> What decides policy quality now is <strong>how a codec degrades under budget cuts and single-token errors</strong>: halving <code>Cover (EEF)</code> mid-stream (<code>50.3 → 25.2 tok</code>, <code>1.85×</code> faster) keeps <strong>76%</strong> vs. <strong>84%</strong> SR, while halving <code>OAT</code> (<code>16 → 8 tok</code>, <code>19 ms</code>) holds <strong>80%</strong>.<sup class="fn">7,8,9,10</sup></p>
+    </div>
+
+    <!-- INTERACTIVE PLAYGROUND 1A: ANYTIME BUDGET SLIDER + CLICK-A-TOKEN PERTURB -->
+    <div class="stage-card reveal" id="play-anytime">
+      <div class="stage-top">
+        <div>
+          <h3>Interactive Sandbox · Anytime Decoding Budget &amp; 1-Token Blast Explorer</h3>
+          <p>Drag the budget slider to truncate decoding mid-stream across all 5 codecs simultaneously, or switch to Perturb mode and click any token chip to detonate a real single-token error.</p>
+        </div>
+        <div class="tgl-group" role="group" aria-label="Sandbox mode">
+          <button type="button" class="tgl on" data-sbox-mode="anytime">Anytime Budget Slider</button>
+          <button type="button" class="tgl amber" data-sbox-mode="perturb">Click-to-Perturb Token</button>
+        </div>
+      </div>
+
+      <!-- Mode A: Anytime Budget Slider Controls -->
+      <div id="sbox-anytime-ctrls">
+        <div class="slider-bar">
+          <span class="slider-lbl">Autoregressive Token Budget</span>
+          <input type="range" id="anytime-slider" min="15" max="100" step="1" value="50" aria-label="Token budget percentage">
+          <span class="slider-val" id="anytime-val">50%</span>
+          <button type="button" class="tgl" id="anytime-sweep">▶ Sweep 15%→100%</button>
+        </div>
+      </div>
+
+      <!-- Mode B: Perturbation Controls -->
+      <div id="sbox-perturb-ctrls" style="display:none;">
+        <div class="tgl-group" style="margin-bottom:12px;" role="group" aria-label="Codec for perturbation">
+          <button type="button" class="tgl on" data-pcodec="FAST">FAST (200× DC cliff)</button>
+          <button type="button" class="tgl" data-pcodec="OAT">OAT (4.3× coarse→fine)</button>
+          <button type="button" class="tgl" data-pcodec="QueST">QueST (flat ~122 mm)</button>
+          <button type="button" class="tgl" data-pcodec="Bin256">Bin256 (local glitch)</button>
+          <button type="button" class="tgl" data-pcodec="Cover (EEF)">Cover (grammar break)</button>
+        </div>
+        <div class="tok-ribbon" id="tok-ribbon" aria-label="Click any token to perturb"></div>
+      </div>
+
+      <div class="split-2">
+        <div class="canvas-box">
+          <canvas id="anytime-canvas" width="700" height="390" style="width:100%;height:auto;"></canvas>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:space-between;gap:14px;">
+          <div id="anytime-readout" class="mini-kpis" style="grid-template-columns:1fr 1fr;margin:0;"></div>
+          <div class="plot-box" id="fig-exp6-live" style="flex:1;"></div>
+        </div>
+      </div>
+      <div class="legend" id="anytime-legend"></div>
+    </div>
+
+    <details class="deep-drawer reveal">
+      <summary>Deep Dive · Rate–Distortion vs. Held-Out LOFO, Validation CE Curves &amp; Full Exp 1 Table</summary>
+      <div class="drawer-body">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:16px 0 10px;">
+          <strong style="font-size:15px;">Offline Reconstruction vs. Embodiment Generalization vs. Qwen3-VL-2B Val-CE</strong>
+          <div class="tgl-group" id="fig1-btns">
+            <button type="button" class="tgl on" data-f1="rd">Rate–Distortion</button>
+            <button type="button" class="tgl" data-f1="lofo">Held-Out LOFO (8.5×)</button>
+            <button type="button" class="tgl" data-f1="valce">Val-CE Curves</button>
+          </div>
+        </div>
+        <div class="plot-box" id="fig1-plot"></div>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr><th>Codec</th><th class="n">Tok/win</th><th class="n">Clean MAE</th><th class="n">1-Tok p50</th><th class="n">1-Tok p90</th><th class="n">Fallback</th><th class="n">PRC@32</th></tr>
+            </thead>
+            <tbody id="tbl-exp1-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- ACT II · DARK CINEMA: FOUR POLICIES, ONE TABLETOP                      -->
+<!-- ====================================================================== -->
+<section class="act cinema-band" id="act-policies">
+  <div class="act-inner">
+    <div class="act-head reveal">
+      <div class="act-kicker"><span>Act 02</span><span class="amber-dot"></span><span>Same Qwen3-VL-2B Backbone · Live LIBERO Reality</span></div>
+      <h2>Four tokenizers on one tabletop—and why "timeouts" are really contact stalls.</h2>
+      <p class="plaque"><code>Bin256</code> has 1.20 mm reconstruction error yet collapses to <strong>17.0%</strong>; <code>OAT (Joint)</code><sup class="fn">11</sup> has 35 mm error yet hits <strong>60.5%</strong>. Cracking open 200 rollouts and measuring stochastic <code>pass@k</code> exposes what validation loss hides.<sup class="fn">2</sup></p>
+    </div>
+
+    <!-- REAL 4-CODEC SHOWDOWN CINEMA -->
+    <div class="cinema-frame reveal" data-cinema="showdown">
+      <div class="cinema-bar">
+        <div class="cinema-title"><span class="live-pulse"></span><span>4-Codec Showdown · Identical Qwen3-VL-2B Backbone, 30k Steps, Same LIBERO Scene</span></div>
+        <div class="cinema-ctrls">
+          <button type="button" class="cbtn on" data-play>❚❚ Pause</button>
+          <button type="button" class="cbtn" data-rate="0.5">0.5×</button>
+          <button type="button" class="cbtn on" data-rate="1">1×</button>
+          <button type="button" class="cbtn" data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="cinema-stage">
+        <video autoplay loop muted playsinline preload="metadata" src="media/cinema_4codec_showdown.mp4"></video>
+      </div>
+      <div class="cinema-foot">
+        <span>Watch the rolling VLM token counter: <code>Bin256</code> burns 5× more tokens yet stalls; <code>Cover</code> &amp; <code>FAST</code> execute briskly, while <code>OAT</code> solves joint control in 16 tokens/chunk.</span>
+        <div class="cinema-scrub-wrap">
+          <span class="cinema-time" data-time>0.0s</span>
+          <input type="range" min="0" max="1000" value="0" data-scrub aria-label="Scrub showdown video">
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE 3-TAB STAGE: LEADERBOARD | FAILURE CINEMA | PASS@K -->
+    <div class="stage-card reveal" id="fig-libero-stage">
+      <div class="stage-top">
+        <div>
+          <h3>Same-Protocol LIBERO Matrix, Physical Failure Cinema &amp; EMA pass@k</h3>
+          <p>Switch tabs to inspect all 6 Qwen3-VL-2B arms, watch real failed rollouts categorized into contact stalls vs. grasp slips, and see EMA prevent late-training coverage collapse.</p>
+        </div>
+        <div class="tgl-group" id="fig3-btns">
+          <button type="button" class="tgl on" data-f3="matrix">6-Arm Leaderboard</button>
+          <button type="button" class="tgl amber" data-f3="failures">Failure Cinema &amp; Anatomy</button>
+          <button type="button" class="tgl" data-f3="passk">EMA pass@k Crossover</button>
+        </div>
+      </div>
+      <div id="fig3-video-wrap" style="display:none;margin-bottom:18px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <video autoplay loop muted playsinline preload="metadata" src="media/cinema_failure_gallery.mp4" style="width:100%;height:auto;"></video>
+      </div>
+      <div class="plot-box" id="fig3-plot"></div>
+    </div>
+
+    <details class="deep-drawer reveal">
+      <summary>Deep Dive · Full 6-Arm × 4-Suite LIBERO Dev-Half Table (eval_idx &lt; 25)</summary>
+      <div class="drawer-body">
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr><th>Tokenizer Arm</th><th>Control Track</th><th class="n">Tok/win</th><th class="n">Spatial</th><th class="n">Object</th><th class="n">Goal</th><th class="n">LIBERO-10</th><th class="n">Mean</th></tr>
+            </thead>
+            <tbody id="tbl-libero-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- ACT III · 900-TRAJECTORY FLUID MORPHING MANIFOLD CANVAS                -->
+<!-- ====================================================================== -->
+<section class="act" id="act-manifold">
+  <div class="act-inner">
+    <div class="act-head reveal">
+      <div class="act-kicker"><span>Act 03</span><span class="amber-dot"></span><span>Exp 3 &amp; Exp 9A · Cross-Embodiment Geometry</span></div>
+      <h2>Shared token syntax is a compression illusion—watch five robot islands collapse into one physical space.</h2>
+      <p class="plaque">A joint-slot covering vocabulary compresses held-out arms with only +0.2% to +3.5% overhead, yet segregates robots into five dialects (<strong>66.0%</strong> 10-NN robot-ID purity). Click <strong>Morph</strong> below to watch 900 real trajectories mix randomly (<strong>22.4%</strong>) and jump <strong>2.85×</strong> in cross-arm 3D motion alignment (<code>+0.243 → +0.693</code>).</p>
+    </div>
+
+    <!-- SHOWSTOPPER 60FPS MANIFOLD MORPH CANVAS -->
+    <div class="stage-card reveal" id="manifold-stage">
+      <div class="stage-top">
+        <div>
+          <h3>Interactive Manifold · 900 Paired 5-Arm Trajectories (Franka · UR5e · IIWA · Kinova3 · Sawyer)</h3>
+          <p>Toggle or drag smoothly between Joint-Slot Cover space and Task-Space C1. Hover any trajectory dot to inspect its robot morphology and true 3D displacement vector.</p>
+        </div>
+        <div class="tgl-group">
+          <button type="button" class="tgl on" id="btn-space-joint">Joint-Slot Cover (5 Islands)</button>
+          <button type="button" class="tgl amber" id="btn-space-c1">Morph → Task-Space C1</button>
+          <button type="button" class="tgl" id="btn-color-toggle">Color: Robot Arm</button>
+        </div>
+      </div>
+
+      <div class="slider-bar">
+        <span class="slider-lbl">Space Morph Interpolation</span>
+        <input type="range" id="manifold-slider" min="0" max="100" value="0" class="amber-range" aria-label="Morph between Joint-Slot and Task-Space C1">
+        <span class="slider-val amber" id="manifold-pct">Joint 100%</span>
+      </div>
+
+      <div class="mini-kpis" id="manifold-kpis">
+        <div class="mkpi"><div class="mkpi-l">10-NN Robot-ID Purity</div><div class="mkpi-v" id="mk-purity" style="color:var(--red);">—</div><div class="mkpi-s">20% = perfect cross-arm mixing</div></div>
+        <div class="mkpi"><div class="mkpi-l">Cross-Arm 3D Motion Align</div><div class="mkpi-v" id="mk-cos" style="color:var(--blue);">—</div><div class="mkpi-s">cosine similarity to other robots' 10-NN</div></div>
+        <div class="mkpi"><div class="mkpi-l">Zero-Shot 3D Probe R²</div><div class="mkpi-v" id="mk-r2" style="color:var(--amber);">—</div><div class="mkpi-s">Franka probe → 4 unseen arms (Exp 3)</div></div>
+      </div>
+
+      <div class="canvas-box">
+        <canvas id="manifold-canvas" width="1100" height="470" style="width:100%;height:auto;cursor:crosshair;"></canvas>
+        <div class="tip" id="manifold-tip"></div>
+      </div>
+      <div class="legend" id="manifold-legend"></div>
+    </div>
+
+    <!-- 4 COMPACT LATE-2026 CROSS-EMBODIMENT MECHANISM CARDS -->
+    <div class="mech-grid reveal">
+      <div class="mech-card">
+        <span class="mech-tag">3D Kinematics Grounded</span>
+        <div class="mech-title">RoboMorpher &amp; BiCAT</div>
+        <div class="mech-desc"><strong>RoboMorpher</strong><sup class="fn">12</sup> pretrains on 40M states with joint + 3D link-pose loss (−17.94 pp without it). <strong>BiCAT</strong><sup class="fn">13</sup> factorizes bimanual parallel blocks (+17.6 pp RoboTwin 2.0).</div>
+        <div class="mech-stat">Explicit 3D kinematic supervision</div>
+      </div>
+      <div class="mech-card">
+        <span class="mech-tag">Intent &amp; Latent Adapter</span>
+        <div class="mech-title">CIALLO, UniLatent &amp; BATCH</div>
+        <div class="mech-desc"><strong>CIALLO</strong><sup class="fn">14</sup> calibrates a brand-new robot in ≤10 s via a 174K adapter (76.7% vs. 70% π<sub>0</sub>). <strong>UniLatent</strong><sup class="fn">15</sup> &amp; <strong>BATCH</strong><sup class="fn">16</sup> align latent obs &amp; human–robot cycles.</div>
+        <div class="mech-stat">10-second per-embodiment adaptor</div>
+      </div>
+      <div class="mech-card">
+        <span class="mech-tag">Embodiment-Free Data</span>
+        <div class="mech-title">AIRoA-0 &amp; Pixel</div>
+        <div class="mech-desc"><strong>AIRoA-0</strong><sup class="fn">17</sup> uses 16,151 h handheld human video (0 robot demos!) reaching 78% vs. 27% VLAs. <strong>Pixel</strong><sup class="fn">18</sup> co-designs human-aligned wheeled hardware.</div>
+        <div class="mech-stat">Shrink embodiment gap at the source</div>
+      </div>
+      <div class="mech-card">
+        <span class="mech-tag">Humanoid &amp; Inertial</span>
+        <div class="mech-title">Social Humanoid &amp; UIE</div>
+        <div class="mech-desc"><strong>Social Humanoid</strong><sup class="fn">19</sup> learns a shared 260 h HHI VQ space for 29-DoF G1; <strong>UIE</strong><sup class="fn">20</sup> estimates real G1 linear velocity zero-shot at 0.099 m/s.</div>
+        <div class="mech-stat">Canonical physical frames</div>
+      </div>
+    </div>
+
+    <details class="deep-drawer reveal">
+      <summary>Deep Dive · Exp 3 Cross-Arm Probe Bars, Gauge Invariance &amp; 13-Robot Compression Overhead</summary>
+      <div class="drawer-body">
+        <div class="tgl-group" id="fig4-btns" style="margin:14px 0 10px;">
+          <button type="button" class="tgl on" data-f4="probe">Zero-Shot R² &amp; Gauge Match</button>
+          <button type="button" class="tgl" data-f4="overhead">13-Robot RoboCOIN Overhead</button>
+        </div>
+        <div class="plot-box" id="fig4-plot"></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- ACT IV · DARK CINEMA: QUAD-ARM RESCUE + LIVE SPRING PHYSICS TOY        -->
+<!-- ====================================================================== -->
+<section class="act cinema-band" id="act-paradox">
+  <div class="act-inner">
+    <div class="act-head reveal">
+      <div class="act-kicker"><span>Act 04</span><span class="amber-dot"></span><span>Exp 4 &amp; Exp 7 · The 0.29 mm Contact-Force Paradox</span></div>
+      <h2>Four robots, one sticky drawer: pose tokens stall at 0%; sparse force tokens rescue all four.</h2>
+      <p class="plaque">In impedance control, contact force lives in <code>p_cmd − p_meas</code>.<sup class="fn">21,22</sup> Replaying achieved poses erases spring deflection (Franka 83% → 14% at 0.29 mm error). A sparse deadband Newton channel active on just <strong>30.8%</strong> of frames hits <strong>81.7%</strong> 3-arm rescue—beating 100% dense force (<strong>80.0%</strong>) with zero free-space regression.</p>
+    </div>
+
+    <!-- REAL 2x4 QUAD-ARM CROSS-EMBODIMENT CINEMA -->
+    <div class="cinema-frame reveal" data-cinema="quad">
+      <div class="cinema-bar">
+        <div class="cinema-title"><span class="live-pulse"></span><span>Quad-Arm Rescue Wall · Top Row: ach_d3 (Pose Only) · Bottom Row: c1F_d3F (+5 mm Force-Intent)</span></div>
+        <div class="cinema-ctrls">
+          <button type="button" class="cbtn on" data-play>❚❚ Pause</button>
+          <button type="button" class="cbtn" data-rate="0.5">0.5×</button>
+          <button type="button" class="cbtn on" data-rate="1">1×</button>
+          <button type="button" class="cbtn" data-rate="1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="cinema-stage">
+        <video autoplay loop muted playsinline preload="metadata" src="media/cinema_quad_arm_rescue.mp4"></video>
+      </div>
+      <div class="cinema-foot">
+        <span><strong>8 real MuJoCo simulations in lockstep:</strong> Franka, UR5e, KUKA IIWA, and Kinova Gen3 executing the exact same unseen <code>drawer_top_bowl</code> demo. Amber frame border = active 5 mm force-intent pulse.</span>
+        <div class="cinema-scrub-wrap">
+          <span class="cinema-time" data-time>0.0s</span>
+          <input type="range" min="0" max="1000" value="0" data-scrub aria-label="Scrub quad-arm cinema">
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE LIVE SPRING-DAMPER DRAWER PHYSICS SIMULATOR -->
+    <div class="stage-card reveal" id="spring-sim-card">
+      <div class="stage-top">
+        <div>
+          <h3>Interactive Physics Toy · Pull the Sticky Drawer Yourself</h3>
+          <p>Calibrated directly to our 24-cell Exp 4A MuJoCo spring law (0.0 N → 150.0 N). Vary controller stiffness <code>K_p</code> across representations and watch why raw commands break while Newton-normalized <code>C1F+D3F</code> stays invariant.</p>
+        </div>
+        <div class="tgl-group" id="sim-mode-btns">
+          <button type="button" class="tgl" data-sim="ach">ach_d3 (Pose Only)</button>
+          <button type="button" class="tgl" data-sim="raw">Raw OSC Command</button>
+          <button type="button" class="tgl amber on" data-sim="c1f">C1F+D3F (Newton Force)</button>
+        </div>
+      </div>
+
+      <div class="slider-bar">
+        <span class="slider-lbl">Target Robot Stiffness K_p</span>
+        <input type="range" id="sim-kp-slider" min="50" max="200" step="10" value="100" class="amber-range" aria-label="Controller stiffness multiplier">
+        <span class="slider-val amber" id="sim-kp-val">1.0× (150)</span>
+        <button type="button" class="tgl on" id="sim-pull-btn">▶ Pull Drawer</button>
+      </div>
+
+      <div class="split-2">
+        <div class="canvas-box">
+          <canvas id="spring-canvas" width="680" height="310" style="width:100%;height:auto;"></canvas>
+        </div>
+        <div class="plot-box" id="fig-paradox-tabs">
+          <div class="tgl-group" style="margin-bottom:12px;" id="fig56-btns">
+            <button type="button" class="tgl amber on" data-f56="frontier">Force Bitrate Frontier (Exp 7B)</button>
+            <button type="button" class="tgl" data-f56="rescue">4-Arm Rescue (Exp 4B)</button>
+            <button type="button" class="tgl" data-f56="heatmap">Kp × δ Newton Matrix (Exp 4A)</button>
+          </div>
+          <div id="fig56-plot"></div>
+        </div>
+      </div>
+    </div>
+
+    <details class="deep-drawer reveal">
+      <summary>Deep Dive · Full 1,680-Episode Exp 4B Matrix (3 Tasks × 4 Arms × 7 Control Modes)</summary>
+      <div class="drawer-body">
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr><th>Task</th><th>Arm</th><th class="n">Raw</th><th class="n">Kp×1.5</th><th class="n">Kp×0.5</th><th class="n">ach_d3</th><th class="n">Grip-C1F</th><th class="n">Deadband C1F</th><th class="n">achF</th></tr>
+            </thead>
+            <tbody id="tbl-exp4-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- ACT V · CLOSED-LOOP DRIFT VS. CONTACT LAW & 2027 HIERARCHICAL STACK    -->
+<!-- ====================================================================== -->
+<section class="act alabaster" id="act-closedloop">
+  <div class="act-inner">
+    <div class="act-head reveal">
+      <div class="act-kicker"><span>Act 05</span><span class="amber-dot"></span><span>Exp 5 &amp; Exp 8 · Unifying Contact Physics &amp; Closed-Loop Adaptation</span></div>
+      <h2>One physical law closes the loop: free-space residuals are drift; contact residuals are force.</h2>
+      <p class="plaque">Blind proprioceptive feedback rescues long chunks (<code>k=32</code>: 32% → 52%) yet degrades under contact drag. Freezing drift updates during contact (<strong>74.7%</strong> of chunks) lifts <code>k=32</code> further to <strong>56.7%</strong> at <code>+0.07</code> drift (and <strong>50.0%</strong> at brutal <code>+0.10</code> drift) at <strong>0 extra VLM tokens</strong>.<sup class="fn">3,4,5,23,24</sup></p>
+    </div>
+
+    <!-- REAL DRIFT RESCUE CINEMA -->
+    <div class="cinema-frame reveal" data-cinema="drift">
+      <div class="cinema-bar">
+        <div class="cinema-title"><span class="live-pulse"></span><span>Closed-Loop Rescue · Frozen Qwen3-VL-2B Under Unknown +0.07 Lateral Drift (k=32, 397 tok/ep)</span></div>
+        <div class="cinema-ctrls">
+          <button type="button" class="cbtn on" data-play>❚❚ Pause</button>
+          <button type="button" class="cbtn" data-rate="0.5">0.5×</button>
+          <button type="button" class="cbtn on" data-rate="1">1×</button>
+        </div>
+      </div>
+      <div class="cinema-stage">
+        <video autoplay loop muted playsinline preload="metadata" src="media/cinema_drift_rescue.mp4"></video>
+      </div>
+      <div class="cinema-foot">
+        <span>Left: open-loop 32-step chunks drift completely off target. Right: contact-aware online <code>[FB]</code> identifies the +0.07 bias in free space, freezes during grasp contact, and completes the task at <strong>0 extra VLM tokens</strong>.</span>
+        <div class="cinema-scrub-wrap">
+          <span class="cinema-time" data-time>0.0s</span>
+          <input type="range" min="0" max="1000" value="0" data-scrub aria-label="Scrub drift video">
+        </div>
+      </div>
+    </div>
+
+    <!-- EXP 8 INTERACTIVE PHASE DIAGRAM + EXP 5 PARETO -->
+    <div class="stage-card reveal">
+      <div class="stage-top">
+        <div>
+          <h3>Drift × Contact-Aware [FB] Phase Diagram &amp; Inference Compute Frontier</h3>
+          <p>Toggle between <code>k=32</code> (cheap 397 tok/ep) and <code>k=16</code> (794 tok/ep) across unknown lateral drift <code>0.00 → 0.10</code>, or inspect the token-compute Pareto curve.</p>
+        </div>
+        <div class="tgl-group" id="fig7-btns">
+          <button type="button" class="tgl on" data-f7="k32">Drift Sweep (k=32)</button>
+          <button type="button" class="tgl amber" data-f7="k16">Drift Sweep (k=16)</button>
+          <button type="button" class="tgl" data-f7="pareto">Compute Pareto (Exp 5)</button>
+        </div>
+      </div>
+      <div class="plot-box" id="fig7-plot"></div>
+    </div>
+
+    <!-- 4-TIER 2027 HIERARCHICAL STACK -->
+    <div class="mech-grid reveal">
+      <div class="mech-card">
+        <span class="mech-tag">Tier 1 · Episodic Agent</span>
+        <div class="mech-title">RoboThink &amp; AMP1</div>
+        <div class="mech-desc">Sparse <code>[INST]</code>/<code>[FB]</code> visual corrections (drift 0.09 → 0.87, 8k vs &gt;1M tok)<sup class="fn">5</sup> &amp; zero-training cross-embodiment memory (85.6%, 4.6× fewer failures)<sup class="fn">24</sup>.</div>
+        <div class="mech-stat">0.1–1 Hz · Persistent Experience</div>
+      </div>
+      <div class="mech-card">
+        <span class="mech-tag">Tier 2 · Discrete Bridge</span>
+        <div class="mech-title">Cover / ActionCodec2 / OAT</div>
+        <div class="mech-desc">Causal geometric or progressive discrete tokens anchor VLM semantic pretraining &amp; anytime mid-stream truncation without neural codec drift.<sup class="fn">4</sup></div>
+        <div class="mech-stat">1–5 Hz · Semantic Pretraining</div>
+      </div>
+      <div class="mech-card">
+        <span class="mech-tag">Tier 3 · Continuous Expert</span>
+        <div class="mech-title">MR0 &amp; SANA-Robot</div>
+        <div class="mech-desc"><strong>MR0</strong><sup class="fn">3</sup> transitions discrete pretrain → flow-matching + CFG-DAgger (93.6% RoboTwin 2.0); <strong>SANA-Robot</strong><sup class="fn">23</sup> runs 30 Hz linear-memory WAM (115 ms on 5090).</div>
+        <div class="mech-stat">20–30 Hz · Smooth Motion</div>
+      </div>
+      <div class="mech-card">
+        <span class="mech-tag">Tier 4 · Force Executor</span>
+        <div class="mech-title">C1F+D3F &amp; Compliant IK</div>
+        <div class="mech-desc">Newton-normalized feedforward wrenches + contact-aware drift gating preserve force intent across robot stiffnesses while respecting kinematic IK walls.</div>
+        <div class="mech-stat">200–1000 Hz · Contact Physics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- ACT VI · LANDSCAPE MAP, PROVENANCE, REFERENCES & CITATION              -->
+<!-- ====================================================================== -->
+<section class="act" id="act-landscape">
+  <div class="act-inner">
+    <div class="act-head reveal">
+      <div class="act-kicker"><span>Act 06</span><span class="amber-dot"></span><span>Synthesis &amp; Provenance</span></div>
+      <h2>The late-2026 landscape &amp; open questions for 2027.</h2>
+      <p class="plaque">Three hard frontiers remain open: 20–24 DoF dexterous hands (+48–154% token blowup), morphology-aware kinematic reach critics (Kinova3 130/151 <code>IK CANNOT</code>), and unifying episodic memory with continual low-level weight updates.</p>
+    </div>
+
+    <details class="deep-drawer reveal" open>
+      <summary>Late-2026 Action Representation Landscape (15 Systems + Controlled Diagnostics)</summary>
+      <div class="drawer-body">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>System</th><th>Tier</th><th>Core Mechanism</th><th>Headline Signal</th></tr></thead>
+            <tbody>
+              <tr><td><strong>ActionCodec2</strong><sup class="fn">4</sup></td><td>Tokenizer + Loop</td><td>Non-neural cover + Set-BPE + residual correction + VLM macros</td><td>8.8 tok/s across 24 robots; zero codec training</td></tr>
+              <tr><td><strong>RoboMorpher</strong><sup class="fn">12</sup></td><td>Cross-Emb. Codec</td><td>Morphology-conditioned on 40M states w/ joint + 3D link-pose loss</td><td>−17.94 pp EmbodiBench without 3D link-pose loss</td></tr>
+              <tr><td><strong>BiCAT</strong><sup class="fn">13</sup></td><td>Bimanual Codec</td><td>Cross-arm factorized parallel dual-block autoregression</td><td>+17.6 pp RoboTwin 2.0; 40.5 ms/chunk</td></tr>
+              <tr><td><strong>CIALLO</strong><sup class="fn">14</sup></td><td>Shared Intent</td><td>8-robot intent codec + 174K-param calibrator</td><td>≤10 s new-robot calibration; 76.7% vs 70.0% π<sub>0</sub></td></tr>
+              <tr><td><strong>UniLatent</strong><sup class="fn">15</sup> / <strong>BATCH</strong><sup class="fn">16</sup></td><td>Space Alignment</td><td>Latent obs alignment / human–robot cycle consistency</td><td>Up to 93% zero-shot; 27/30 real xArm → Franka</td></tr>
+              <tr><td><strong>AIRoA-0</strong><sup class="fn">17</sup> / <strong>Pixel</strong><sup class="fn">18</sup></td><td>Data &amp; Hardware</td><td>16,151 h handheld video (0 robot data) / wheeled humanoid</td><td>78% vs 27% VLAs without robot pretraining</td></tr>
+              <tr><td><strong>Social Humanoid</strong><sup class="fn">19</sup> / <strong>UIE</strong><sup class="fn">20</sup></td><td>Humanoid Body</td><td>260 h HHI VQ space (G1) / 55.6M inertial velocity encoder</td><td>0.099 m/s zero-shot velocity on real G1</td></tr>
+              <tr class="hl"><td><strong>C1F+D3F &amp; CSDW</strong><sup class="fn">21</sup></td><td>Contact Physics</td><td>Task-space pose + sparse deadband Newton force channel</td><td>Franka 35%→90%, IIWA 0%→70%; real cable 25.7%→94.3%</td></tr>
+              <tr><td><strong>Beyond Val Loss</strong><sup class="fn">2</sup></td><td>Post-Training</td><td><code>pass@k</code> coverage vs. reliability diagnostics</td><td>EMA 30k 93.3% pass@4 vs Raw 84.0% despite rising CE</td></tr>
+              <tr class="hl-blue"><td><strong>MR0</strong><sup class="fn">3</sup> / <strong>SANA-Robot</strong><sup class="fn">23</sup></td><td>Hierarchical VLA</td><td>Discrete pretrain → flow-matching + CFG-DAgger / 30 Hz WAM</td><td>MR0 93.6% RoboTwin 2.0; SANA 115 ms on RTX 5090</td></tr>
+              <tr class="hl-blue"><td><strong>RoboThink</strong><sup class="fn">5</sup> / <strong>AMP1</strong><sup class="fn">24</sup></td><td>Agentic Loop</td><td>Sparse <code>[INST]</code>/<code>[FB]</code> DAgger / zero-training episodic memory</td><td>Drift 0.09→0.87 (8k tok); AMP1 85.6% &amp; 4.6× fewer fails</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details class="deep-drawer reveal">
+      <summary>Experimental Provenance &amp; Strict Protocol Hygiene</summary>
+      <div class="drawer-body">
+        <p style="margin-top:14px;font-size:14.5px;color:var(--ink-2);">Every LIBERO evaluation strictly reads only the development half (<code>eval_idx &lt; 25</code>, <code>PRAXIS_EVAL_INIT_STATE_INDEX=eval_idx</code>; sealed test half <code>25–49</code> is never touched). All covering vocabularies are fitted strictly from scratch on public RoboCOIN / LIBERO training trajectories (no external ActionCodec2 or G0.5 weights loaded). Cross-arm physics experiments run registered robosuite 1.5.2 XMLs on unseen LIBERO HDF5 demonstrations. All cinemas are direct, unretouched MuJoCo / LIBERO renders.</p>
+      </div>
+    </details>
+
+    <div style="margin-top:54px;" id="notes">
+      <h3 style="font-size:20px;margin:0 0 6px;">References</h3>
+      <ol class="ref-list" id="notes-list"></ol>
+    </div>
+
+    <div class="cite-box">
+      <button type="button" class="copy-btn" id="copy-bib">Copy BibTeX</button>
+      <pre id="bib-text" style="margin:0;">@misc{action_tokenization_of_what_2026,
+  title  = {Action Tokenization (of What?): An Interactive Empirical Scroll on Cross-Embodiment Robotics},
+  year   = {2026},
+  month  = {November},
+  url    = {https://lixuan27.github.io/action-tokenization/}
+}</pre>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="site-foot-inner">
+    <div><strong>Action Tokenization (of What?)</strong> · Interactive Empirical Scroll · Nov 2026</div>
+    <div>All canvases, videos &amp; metrics rendered live from verified experimental JSONs &amp; MuJoCo rollouts.</div>
+  </div>
+</footer>
+
+<!-- FOOTNOTE DEFINITIONS (Auto-wired to hover popovers + #notes-list) -->
+<aside class="fnote" data-n="1">Karl Pertsch et al. <a href="https://arxiv.org/abs/2501.09747">FAST: Efficient Action Tokenization for Vision-Language-Action Models</a>. 2025.</aside>
+<aside class="fnote" data-n="2">Yuejiang Sun, Shuran Song, et al. <a href="https://arxiv.org/abs/2611.01565">Beyond Validation Loss: Understanding the Pretraining-to-Posttraining Dynamics of Action Policies</a>. arXiv:2611.01565, Nov 2026.</aside>
+<aside class="fnote" data-n="3">Meituan Robotics Team. <a href="https://arxiv.org/abs/2611.08577">Meituan-Robotics-0: Scaling VLA Foundation Models via Discrete-to-Continuous Pretraining and Event-Driven Closed-Loop Execution</a>. arXiv:2611.08577, Nov 2026.</aside>
+<aside class="fnote" data-n="4">Zibin Dong et al. <a href="https://arxiv.org/abs/2611.15490">ActionCodec2: Non-Neural Streaming Action Tokenization with Residual Error Correction and VLM Macro Actions</a>. arXiv:2611.15490, Nov 2026.</aside>
+<aside class="fnote" data-n="5">Yilun Du et al. <a href="https://arxiv.org/abs/2611.30111">RoboThink: Sparse Agentic Intervention and Online Feedback Adaptation for VLA Policies</a>. arXiv:2611.30111, Nov 2026.</aside>
+<aside class="fnote" data-n="6">HoloBrain-0 Team. <a href="https://arxiv.org/abs/2602.12062">HoloBrain-0: Technical Report</a>. arXiv:2602.12062, Feb 2026.</aside>
+<aside class="fnote" data-n="7">ActionPiece Authors. <a href="https://arxiv.org/abs/2609.18487">ActionPiece: Contextually Tokenizing Action Sequences for VLA Models</a>. arXiv:2609.18487, Sep 2026.</aside>
+<aside class="fnote" data-n="8">ProAct Authors. <a href="https://arxiv.org/abs/2610.09170">ProAct: Progressive Action Tokenization with Coarse-to-Fine Ordering</a>. arXiv:2610.09170, Oct 2026.</aside>
+<aside class="fnote" data-n="9">CAP Authors. <a href="https://arxiv.org/abs/2610.09178">CAP: Context-Aware Action Perturbation Analysis for Discrete VLAs</a>. arXiv:2610.09178, Oct 2026.</aside>
+<aside class="fnote" data-n="10">CATok Authors. <a href="https://arxiv.org/abs/2609.35469">CATok: Causal Action Tokenization and Positional Entropy</a>. arXiv:2609.35469, Sep 2026.</aside>
+<aside class="fnote" data-n="11">Athanasios Mete et al. <a href="https://arxiv.org/abs/2407.15840">QueST: Self-Supervised Skill Abstractions for Learning Continuous Control</a> (NeurIPS 2024) &amp; Ordered Action Tokenization (OAT, nested coarse-to-fine discrete codes, 2026).</aside>
+<aside class="fnote" data-n="12">RoboMorpher Authors. <a href="https://arxiv.org/abs/2611.24816">RoboMorpher: Morphology-Conditioned Action Tokenization Pretrained on 40M Morphology-State Pairs</a>. arXiv:2611.24816, Nov 2026.</aside>
+<aside class="fnote" data-n="13">BiCAT Authors. <a href="https://arxiv.org/abs/2611.23499">BiCAT: Bimanual Cooperative Action Tokenizer with Parallel Dual-Block Autoregression</a>. arXiv:2611.23499, Nov 2026.</aside>
+<aside class="fnote" data-n="14">CIALLO Authors. <a href="https://arxiv.org/abs/2611.13732">CIALLO: Cross-Embodiment Shared-Intent Action Codec with 10-Second Calibration</a>. arXiv:2611.13732, Nov 2026.</aside>
+<aside class="fnote" data-n="15">UniLatent Authors. <a href="https://arxiv.org/abs/2611.10061">UniLatent: Cross-Embodiment Transfer via Latent Observation Alignment</a>. arXiv:2611.10061, Nov 2026.</aside>
+<aside class="fnote" data-n="16">Shuran Song et al. <a href="https://arxiv.org/abs/2611.10148">BATCH: Self-Supervised Human-to-Robot Action Cycle Alignment</a>. arXiv:2611.10148, Nov 2026.</aside>
+<aside class="fnote" data-n="17">AIRoA-0 Team. <a href="https://arxiv.org/abs/2611.03815">AIRoA-0: Zero-Robot-Data Handheld Pretraining for Cross-Embodiment Manipulation</a>. arXiv:2611.03815, Nov 2026.</aside>
+<aside class="fnote" data-n="18">Ruslan Salakhutdinov, Deepak Pathak, et al. <a href="https://arxiv.org/abs/2611.03648">Pixel: Human-Aligned Wheeled Humanoid Co-Design for Scalable Manipulation</a>. arXiv:2611.03648, Nov 2026.</aside>
+<aside class="fnote" data-n="19">Jitendra Malik, Trevor Darrell, Angjoo Kanazawa, et al. <a href="https://arxiv.org/abs/2611.08407">Social Humanoid: Learning Interactive Whole-Body Motion Spaces for Humanoids</a>. arXiv:2611.08407, Nov 2026.</aside>
+<aside class="fnote" data-n="20">Guanya Shi et al. <a href="https://arxiv.org/abs/2611.10137">Unified Inertial Encoder: Cross-Embodiment Proprioceptive State Estimation</a>. arXiv:2611.10137, Nov 2026.</aside>
+<aside class="fnote" data-n="21">CSDW Authors. <a href="https://arxiv.org/abs/2609.33145">Command-State Discrepancy Weighting for Contact-Rich Manipulation</a>. arXiv:2609.33145, Sep 2026.</aside>
+<aside class="fnote" data-n="22">Compliance for Free Authors. <a href="https://arxiv.org/abs/2609.19976">Compliance for Free: Recovering Impedance Intent from Kinematic Demonstrations</a>. arXiv:2609.19976, Sep 2026.</aside>
+<aside class="fnote" data-n="23">Zhijian Liu et al. <a href="https://arxiv.org/abs/2611.28943">SANA-Robot: Constant-Cost Hybrid Memory World-Action Models at 30 Hz</a>. arXiv:2611.28943, Nov 2026.</aside>
+<aside class="fnote" data-n="24">AMP1 Authors. <a href="https://arxiv.org/abs/2611.09892">On Agentic Manipulation Policies (AMP1): Zero-Demonstration Control with Persistent Cross-Embodiment Memory</a>. arXiv:2611.09892, Nov 2026.</aside>
+
+<script src="data.js"></script>
+<script src="charts.js"></script>
+</body>
+</html>
